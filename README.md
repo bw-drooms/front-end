@@ -1,2 +1,2 @@
 # front-end
-Front-end React applicatino for Droom
+Front-end React application for Droom
