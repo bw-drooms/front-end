@@ -1,20 +1,10 @@
 // import actions to run compiler switch cases
-
-//sets initial state
-const initialState = {
-    companyJob: [],
-    company: [],
-    isFetching: false,
-    isUpdating: false,
-    error: 'Error Response'
-
-}
+import { combineReducers} from 'redux'
+//call company reducer
+import companyReducer from './CompanyReducer'
 
 //combine reducer for calls -set to default
-const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
+const rootReducer = combineReducers({
+    companyReducer
+})
 export default rootReducer
