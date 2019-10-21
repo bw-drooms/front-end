@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import CmpLanding from './components/company/CmpLanding';
+import C_Landing from './components/company/C_Landing';
 
 function App() {
   return (
     <div className="App">
       <h1>Droom</h1>
-      <CmpLanding />
+      <C_Landing />
     </div>
   );
 }

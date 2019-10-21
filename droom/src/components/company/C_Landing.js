@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 const CmpLanding = () => {
     const [company, setCompany] = useState([
@@ -40,6 +40,7 @@ const CmpLanding = () => {
                             <button>delete</button>
                         </div>
                     ))}
+                    {/* Will write a link to form for company details. Form will take in data for cu  */}
                 </div>
                 <div className='company-jobs'>
                     {companyJobs.map(jobs => (
@@ -55,6 +56,7 @@ const CmpLanding = () => {
                             <button>edit</button>
                             <button>save</button>
                             <button>delete</button>
+                            {/* Will write a link to form for job post. Form will take in data for crud  */}
                         </div>
                     ))}
                 </div>
