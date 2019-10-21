@@ -11,7 +11,9 @@ const C_JobForm = () => {
             "company_id": 2,
         }
     ])
-
+    const handle  = e => {
+        setCompanyJobs({ ...companyJobs, [e.target.name]: e.target.value })
+    }
     const cJForm = e => {
         // axiosWithAuth()
         //   .post(``, addJob)
@@ -30,8 +32,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='location'
-              value='handle'
-              onChange
+              value={companyJobs.location}
+              onChange={handle}
               />
               </label>
               <label>
@@ -39,8 +41,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='position'
-              value='handle'
-              onChange
+              value={companyJobs.position}
+              onChange={handle}
               />
               </label>
               <label>
@@ -48,8 +50,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='pay_range'
-              value='handle'
-              onChange
+              value={companyJobs.pay_range}
+              onChange={handle}
               />
               </label>
               <label>
@@ -57,8 +59,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='description'
-              value='handle'
-              onChange
+              value={companyJobs.description}
+              onChange={handle}
               />
               </label>
                 <button type='submit'>Submit</button>
