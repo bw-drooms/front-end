@@ -16,8 +16,21 @@ const C_JobForm = () => {
             "number_of_employees": 500
         }
     ])
+
+    const cJForm = e => {
+        // axiosWithAuth()
+        //   .post(``, addJob)
+        //   .then(res => {
+        //     console.log('Add New Job', res.data)
+        //     setter()
+        //   })
+        //   .catch(err => console.log(err))
+      }
     return (
         <div>
+            <form onSubmit={cJForm}>
+                <button type='submit'>Submit</button>
+            </form>
             
         </div>
     )

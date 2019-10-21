@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CmpLanding = () => {
+const CLanding = () => {
     const [company, setCompany] = useState([
         {
             "id": 1,
@@ -65,4 +65,4 @@ const CmpLanding = () => {
             )
         }
         
-        export default CmpLanding
+        export default CLanding
