@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import clsx from 'clsx';
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
+    width: '45%',
   },
   dense: {
     marginTop: theme.spacing(2),
@@ -18,9 +21,15 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200,
   },
+  button: {
+    margin: theme.spacing(1),
+    height: 40,
+  }
 }));
 
 export default function LoginForm() {
+
+    const classes = useStyles();  
     const [values, setValues] = useState({
         email: "",
         password: ""
@@ -32,7 +41,7 @@ export default function LoginForm() {
 
     return (
         <div className="login-form">
-            <form className={classes.container} noValidate autoComplete="off">
+            <form className={classes.container} autoComplete="off">
                 <TextField
                     id="outlined-email-input"
                     label="Email"
@@ -42,6 +51,8 @@ export default function LoginForm() {
                     autoComplete="email"
                     margin="normal"
                     variant="outlined"
+                    onChange={handleChange}
+                    required
                 />
                 <TextField
                     id="outlined-password-input"
@@ -50,8 +61,10 @@ export default function LoginForm() {
                     type="password"
                     autoComplete="current-password"
                     margin="normal"
+                    onChange={handleChange}
                     variant="outlined"
                 />
+                <Button className={classes.button} variant="contained" type="submit">Submit</Button>
             </form>
         </div>
     )
