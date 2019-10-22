@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import CJobs from './components/company/CJobs'
-import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignupForm';
+import LoginForm from './components/login/LoginForm';
+import SignupForm from './components/login/SignupForm';
 import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
