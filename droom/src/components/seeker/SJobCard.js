@@ -10,7 +10,6 @@ const JobCard = props => {
         <CardDetails
             title={props.account.jobTitle}
             subheader={props.account.jobPosition}
-            chips={props.account.jobTags}
             discription={props.account.jobDescription}
         />
     );

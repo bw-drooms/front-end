@@ -38,7 +38,7 @@ const CJobs = (props) => {
       
           <div className='form-on-edit'>
             {editing && (
-              <form onSubmit={}>
+              <form onSubmit={null}>
                 {/* NEEDS handle and onchange */}
                 <legend>Change Job Details</legend>
                 <label>

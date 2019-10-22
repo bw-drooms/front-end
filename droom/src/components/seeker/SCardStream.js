@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Swipeable from "react-swipy";
 import {getSeekerJobs} from "../../utils/actions/seeker";
 import { Card, Button } from '@material-ui/core';
+import jobCard from "./SJobCard"
 const appStyles = {
     height: "100%",
     display: "flex",
@@ -15,7 +16,7 @@ const appStyles = {
     overflow: "hidden"
   };
   
-  const wrapperStyles = { position: "relative", width: "250px", height: "250px" };
+  const wrapperStyles = { position: "relative", width: "50%", height: "60%" };
   const actionsStyles = {
     display: "flex",
     justifyContent: "space-between",
@@ -62,7 +63,14 @@ class cardStream extends Component {
                   onSwipe={this.match}
                   onAfterSwipe={this.remove}
                 >
-                  <Card>{cards[0].description}</Card>
+                  <Card>
+                <jobCard>
+                   <h3>{cards[0].position}</h3>
+                    <h4>{cards[0].location}</h4>
+                    <h5>salary {cards[0].pay_range}</h5>
+                    <p>{cards[0].description}</p>
+                </jobCard>
+                  </Card>
 
                 </Swipeable>
                 {cards.length > 1 && <Card zIndex={-1}>{cards[1].description}</Card>}
