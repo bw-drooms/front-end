@@ -8,7 +8,7 @@ export const C_JOB_FETCH_FAILED = 'C_JOB_FETCH_FAILED '
 export const getJobData = (jobs) => dispatch => {
     dispatch({ type: C_JOB_DATA })
     axios
-    .get('', jobs)
+    .get('https://droom6.herokuapp.com/api/jobs')
     .then(res => {
         console.log('Initial Call for jobs', res.data)
         dispatch({ type: C_JOB_FETCH_SUCCESS, payload:res.data})

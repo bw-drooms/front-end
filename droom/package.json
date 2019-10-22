@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.5.1",
     "axios": "^0.19.0",
+    "formik": "^1.5.8",
     "hammer": "^0.0.5",
     "material-ui": "^0.20.2",
     "react": "^16.10.2",
@@ -17,7 +19,8 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
