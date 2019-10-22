@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getJobData, editJobData, deleteJob } from '../../utils/actions'
+import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
 import CNewJob from './CNewJob'
 //import action from actions
 
@@ -37,8 +37,8 @@ const CJobs = (props) => {
           ))}
       
           <div className='form-on-edit'>
-            {editing && (
-              <form onSubmit={}>
+            {/* {editing && ( */}
+              <form>
                 {/* NEEDS handle and onchange */}
                 <legend>Change Job Details</legend>
                 <label>
@@ -82,7 +82,7 @@ const CJobs = (props) => {
                   <button >cancel</button>
                 </div>
               </form>
-            )}
+            {/* )} */}
           </div>
         </div>
     </div >
@@ -100,4 +100,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getJobData, editJobData, deleteJob })(CJobs)
+export default connect(mapStateToProps, { getJobData, editJobData, deleteJobPost })(CJobs)
