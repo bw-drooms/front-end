@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import CardDetails from './MainStreamCard';
+import CardDetails from './SCardStream';
 
 const JobCard = props => {
     const { classes } = props;
 
     return (
         <CardDetails
-            image={props.account.jobImg}
             title={props.account.jobTitle}
             subheader={props.account.jobPosition}
             chips={props.account.jobTags}
