@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getJobData, editJobData  } from '../../utils/actions'
+import { getJobData, editJobData } from '../../utils/actions'
 //import action from actions
 
 const CJobForm = () => {
@@ -19,12 +19,12 @@ const CJobForm = () => {
       "company_industry": "information technology",
       "number_of_employees": 500
     }])
+
+
   //use effect for call for data
   useEffect(() => {
     getJobData()
   }, [])
-
-
   //conditional render for is fetch data
   if (props.isFetching) {
     return <alert>Jobs are loading...</alert>
@@ -34,16 +34,20 @@ const CJobForm = () => {
     <div>
       <div className='company-jobs'>
         {jobs.map(jobs => (
-          <div className='company-jobs-head' key={jobs.id}>
-            <h4>{jobs.position}</h4>
-            <p>{jobs.location}</p>
-            <p>{jobs.pay_range}</p>
-            <div className='delete'>x
-            {/* ^this line needs an onclick for delete action targeting ID */}
-            <div className='company-jobs-body'>
+          <div className='delete'>x
+           {/* ^this line needs an onclick for delete action targeting ID */}
+            <div className='company-jobs-head' key={jobs.id}>
+              <h4>{jobs.position}</h4>
+              <p>{jobs.location}</p>
+              <p>{jobs.pay_range}</p>
+              <div className='company-jobs-body'>
                 <p>description  :  <br />{jobs.description}</p>
                 <p className='c-j-body-bottom'>{jobs.company_name}</p>
                 <p className='c-j-body-bottom'>{jobs.company_industry}</p>
+              </div>
+              <div className='button-row'>
+                <button>edit</button>
+                <button>save</button>
               </div>
             </div>
           </div>
@@ -89,20 +93,19 @@ const CJobForm = () => {
           </label>
           <button type='submit'>Submit</button>
         </form>
-        <div className='button-row'>
-          <button>edit</button>
-          <button>save</button>
-        </div>
         {props.isUpdating && (
-          <form onSubmit={e => {editJobData()}}
+          <form onSubmit={e => { editJobData() }}
           )}
+          <div className='newJobForm'>
+            
+          </div>
       </div>
     </div>
   )
 }
 //call from store to get state for view
 const mapStateToProps = state => {
-  console.log('C Job Post state', state)
+  console.log('C Jobs Post state', state)
   return {
     jobs: state.companyJob,
     isFetching: state.isFetching,
@@ -111,5 +114,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getJobData, editJobData })(CJobForm) 
+export default connect(mapStateToProps, { getJobData, editJobData })(CJobForm)
 // CHECK LINE 97
