@@ -28,69 +28,65 @@ const CJobs = (props) => {
             <h4>{jobs.position} @ <t /> {jobs.company_name}</h4>
             <p>{jobs.location}</p>
             <p>{jobs.company_industry} <br /> {jobs.pay_range}</p>
-            <div className='company-jobs-description toggle'>
-              <p>description  :  <br />{jobs.description}</p>
-              <div className='button-row'>
-                <button>edit</button>
-                <button>x</button>
-              </div>
+            <p>description  :  <br />{jobs.description}</p>
+            <div className='button-row'>
+              <button>edit</button>
+              <button>x</button>
             </div>
-            ))}
-        {/* <div>
-          {editing && (
-            <form onSubmit={}>
-              {/* NEEDS handle and onchange */}
-            <legend>Change Job Details</legend>
-            <label>
-              Location:
-   <input
-                type='text'
-                name='location'
-              // value={companyJobs.location}
-              // onChange={handle}
-              />
-            </label>
-            <label>
-              Position:
-   <input
-                type='text'
-                name='position'
-              // value={companyJobs.position}
-              // onChange={handle}
-              />
-            </label>
-            <label>
-              Salary Offer:
-   <input
-                type='text'
-                name='pay_range'
-              // value={companyJobs.pay_range}
-              // onChange={handle}
-              />
-            </label>
-            <label>
-              Description:
-   <input
-                type='text'
-                name='description'
-              // value={companyJobs.description}
-              // onChange={handle}
-              />
-            </label>
-            {/* <div className="button-row">
-                <button type="submit">save</button>
-                <button onClick={() => setEditing(false)}>cancel</button>
-              </div>
-            </form>
-          )}
-        </div>  */}
-            <div className='newJobForm'>
-              {/* <CNewJob /> */}
-            </div>
+          </div>
+          ))}
       
-      </div>
-      </div>
-    </div>
+          <div className='form-on-edit'>
+            {editing && (
+              <form onSubmit={}>
+                {/* NEEDS handle and onchange */}
+                <legend>Change Job Details</legend>
+                <label>
+                  Location:
+    <input
+                    type='text'
+                    name='location'
+                  // value={companyJobs.location}
+                  // onChange={handle}
+                  />
+                </label>
+                <label>
+                  Position:
+    <input
+                    type='text'
+                    name='position'
+                  // value={companyJobs.position}
+                  // onChange={handle}
+                  />
+                </label>
+                <label>
+                  Salary Offer:
+    <input
+                    type='text'
+                    name='pay_range'
+                  // value={companyJobs.pay_range}
+                  // onChange={handle}
+                  />
+                </label>
+                <label>
+                  Description:
+    <input
+                    type='text'
+                    name='description'
+                  // value={companyJobs.description}
+                  // onChange={handle}
+                  />
+                </label>
+                <div className="button-row">
+                  <button type="submit">save</button>
+                  <button >cancel</button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+    </div >
+    
   )
 }
 
