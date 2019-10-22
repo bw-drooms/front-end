@@ -21,7 +21,7 @@ const CJobs = () => {
       "number_of_employees": 500
     }])
 
-
+//needs endpoint company/id/jobs
   //use effect for call for data
   useEffect(() => {
     getJobData()

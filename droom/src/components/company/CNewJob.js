@@ -1,6 +1,8 @@
 import React from 'react'
 
 const CNewJob = (props) => {
+
+  //needs post for endpoint action
     return (
         <div>
             <form onSubmit={props.isUpdating}>
