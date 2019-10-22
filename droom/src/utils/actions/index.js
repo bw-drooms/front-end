@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-//<------------------COMPANY JOBS FETCH ---------->
+/*<------------------COMPANY JOBS FETCH ---------->*/
 export const C_JOB_DATA = 'C_JOB_DATA'
 export const C_JOB_FETCH_SUCCESS = 'C_JOB_FETCH_SUCCESS'
 export const C_JOB_FETCH_FAILED = 'C_JOB_FETCH_FAILED '

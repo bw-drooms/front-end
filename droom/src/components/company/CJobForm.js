@@ -19,13 +19,13 @@ const CJobForm = () => {
       "company_industry": "information technology",
       "number_of_employees": 500
     }])
-//use effect for call for data
-useEffect(() => {
-  getJobData()
-}, [])
+  //use effect for call for data
+  useEffect(() => {
+    getJobData()
+  }, [])
 
 
-//conditional render for is fetch data
+  //conditional render for is fetch data
   if (props.isFetching) {
     return <alert>Jobs are loading...</alert>
   }
@@ -34,29 +34,27 @@ useEffect(() => {
     <div>
       <div className='company-jobs'>
         {jobs.map(jobs => (
-        <div className='company-jobs-head'key={jobs.id}>
-          <h4>{jobs.position}</h4>
-          <p>{jobs.location}</p>
-          <p>{jobs.pay_range}</p>
-          <div className='company-jobs-body'>
-            <p>description  :  <br />{jobs.description}</p>
-            <p className='c-j-body-bottom'>{jobs.company_name}</p>
-            <p className='c-j-body-bottom'>{jobs.company_industry}</p>
+          <div className='company-jobs-head' key={jobs.id}>
+            <h4>{jobs.position}</h4>
+            <p>{jobs.location}</p>
+            <p>{jobs.pay_range}</p>
+            <div className='company-jobs-body'>
+              <p>description  :  <br />{jobs.description}</p>
+              <p className='c-j-body-bottom'>{jobs.company_name}</p>
+              <p className='c-j-body-bottom'>{jobs.company_industry}</p>
+            </div>
           </div>
-          <button>edit</button>
-          <button>save</button>
-          <button>delete</button>
-        </div>
-         ))}
-        <form onSubmit={cJForm}>
+        ))}
+        <form >
+          {/* need to add in on submit handle and onchange */}
           <legend>Fill a Position</legend>
           <label>
             Location:
             <input
               type='text'
               name='location'
-              // value={companyJobs.location}
-              // onChange={handle}
+            // value={companyJobs.location}
+            // onChange={handle}
             />
           </label>
           <label>
@@ -64,8 +62,8 @@ useEffect(() => {
             <input
               type='text'
               name='position'
-              // value={companyJobs.position}
-              // onChange={handle}
+            // value={companyJobs.position}
+            // onChange={handle}
             />
           </label>
           <label>
@@ -73,8 +71,8 @@ useEffect(() => {
             <input
               type='text'
               name='pay_range'
-              // value={companyJobs.pay_range}
-              // onChange={handle}
+            // value={companyJobs.pay_range}
+            // onChange={handle}
             />
           </label>
           <label>
@@ -82,24 +80,31 @@ useEffect(() => {
             <input
               type='text'
               name='description'
-              // value={companyJobs.description}
-              // onChange={handle}
+            // value={companyJobs.description}
+            // onChange={handle}
             />
           </label>
           <button type='submit'>Submit</button>
         </form>
+        <div className='button-row'>
+          <button>edit</button>
+          <button>save</button>
+        </div>
+     {isUpdating && (
+     <form onSubmit={C_JOB_EDIT})}
       </div>
     </div>
-      )
-  }
-  
+  )
+}
+
 const mapStateToProps = state => {
-        console.log('C Job Post state', state)
-  return{
-        jobs: state.companyJob,
-      isFetching: state.isFetching,
-      error: state.error
-   }
- }
- 
- export default connect(mapStateToProps, {getJobData})(CJobForm) 
+  console.log('C Job Post state', state)
+  return {
+    jobs: state.companyJob,
+    isFetching: state.isFetching,
+    isUpdating: state.isUpdating,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { getJobData })(CJobForm) 
