@@ -63,6 +63,7 @@ export default function LoginForm() {
                     margin="normal"
                     onChange={handleChange}
                     variant="outlined"
+                    required
                 />
                 <Button className={classes.button} variant="contained" type="submit">Submit</Button>
             </form>
