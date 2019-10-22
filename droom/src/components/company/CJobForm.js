@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getJobData } from '../../utils/actions'
+import { getJobData, editJobData  } from '../../utils/actions'
 //import action from actions
 
 const CJobForm = () => {
@@ -38,15 +38,18 @@ const CJobForm = () => {
             <h4>{jobs.position}</h4>
             <p>{jobs.location}</p>
             <p>{jobs.pay_range}</p>
+            <div className='delete'>x
+            {/* ^this line needs an onclick for delete action targeting ID */}
             <div className='company-jobs-body'>
-              <p>description  :  <br />{jobs.description}</p>
-              <p className='c-j-body-bottom'>{jobs.company_name}</p>
-              <p className='c-j-body-bottom'>{jobs.company_industry}</p>
+                <p>description  :  <br />{jobs.description}</p>
+                <p className='c-j-body-bottom'>{jobs.company_name}</p>
+                <p className='c-j-body-bottom'>{jobs.company_industry}</p>
+              </div>
             </div>
           </div>
         ))}
-        <form >
-          {/* need to add in on submit handle and onchange */}
+        <form onSubmit={props.isUpdating}>
+          {/* NEEDS handle and onchange */}
           <legend>Fill a Position</legend>
           <label>
             Location:
@@ -90,13 +93,14 @@ const CJobForm = () => {
           <button>edit</button>
           <button>save</button>
         </div>
-     {isUpdating && (
-     <form onSubmit={C_JOB_EDIT})}
+        {props.isUpdating && (
+          <form onSubmit={e => {editJobData()}}
+          )}
       </div>
     </div>
   )
 }
-
+//call from store to get state for view
 const mapStateToProps = state => {
   console.log('C Job Post state', state)
   return {
@@ -107,4 +111,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getJobData })(CJobForm) 
+export default connect(mapStateToProps, { getJobData, editJobData })(CJobForm) 
