@@ -31,10 +31,11 @@ export const editJobData = (id) => dispatch => {
 
 export const DELETE_C_JOB = 'DELETE_C_JOB'
 export const DELETE_C_JOB_FAILED = 'DELETE_C_JOB_FAILED'
+
 export const deleteJobPost = (id) => dispatch => {
     dispatch({ type: DELETE_C_JOB });
     axios
-        .put('')
+        .put('https://droom6.herokuapp.com/api/company/id/jobs', id)
         .then(res => {
             console.log('removing filled position', res.data)
             dispatch({ type: DELETE_C_JOB, payload: res.data.id })
