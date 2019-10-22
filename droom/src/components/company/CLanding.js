@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CJobForm from './CJobForm'
 
 const CLanding = () => {
     const [company, setCompany] = useState(
@@ -25,6 +26,9 @@ const CLanding = () => {
                     {/* Will write a link to form for company details. Form will take in data for cu  */}
                 </div>
             </div>
+        <div className='jobs'>
+            <CJobForm />
+        </div>
         </div>
     )
 }
