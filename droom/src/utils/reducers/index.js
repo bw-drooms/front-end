@@ -7,4 +7,4 @@ import companyReducer from './CompanyReducer'
 const rootReducer = combineReducers({
     companyReducer
 })
-export default companyReducer
+export default rootReducer

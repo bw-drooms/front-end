@@ -38,7 +38,7 @@ const CJobs = (props) => {
         {props.jobs.map(jobs => (
           <div className='delete'>x
            {/* ^this line needs an onclick for delete action targeting ID */}
-            <div className='company-jobs-head' key={jobs.id}>
+            <div className='company-jobs-head' key={jobs.id} id={jobs.id}>
               <h4>{jobs.position} @ <t/> {jobs.company_name}</h4>
               <p>{jobs.location}</p>
               <p>{jobs.company_industry} <br/> {jobs.pay_range}</p>
@@ -107,10 +107,10 @@ const CJobs = (props) => {
 const mapStateToProps = state => {
   console.log('C Jobs Post state', state)
   return {
-    jobs: state.jobs || [],
-    isFetching: state.isFetching,
-    isUpdating: state.isUpdating,
-    error: state.error
+    jobs: state.companyReducer.jobs || [],
+    isFetching: state.companyReducer.isFetching,
+    isUpdating: state.companyReducer.isUpdating,
+    error: state.companyReducer.error
   }
 }
 
