@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getJobData, editJobData } from '../../utils/actions'
+import CNewJob from './CNewJob'
 //import action from actions
 
-const CJobForm = () => {
+const CJobs = () => {
   //temporary state for visual test will delete
   const [jobs, setJobs] = useState([
     {
@@ -97,7 +98,7 @@ const CJobForm = () => {
           <form onSubmit={e => { editJobData() }}
           )}
           <div className='newJobForm'>
-            
+            <CNewJob />
           </div>
       </div>
     </div>
@@ -114,5 +115,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getJobData, editJobData })(CJobForm)
+export default connect(mapStateToProps, { getJobData, editJobData })(CJobs)
 // CHECK LINE 97

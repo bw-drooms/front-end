@@ -13,7 +13,7 @@ const CLanding = () => {
                 </div>
             </div>
         <div className='jobs'>
-            <CJobForm />
+            <CJobs />
         </div>
         </div>
     )
