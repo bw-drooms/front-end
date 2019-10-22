@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-<<<<<<< HEAD
 import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
-=======
-import { getJobData, editJobData } from '../../utils/actions'
->>>>>>> ed24dc654a84f985a8b9dfcb98ab5dc21887eeb8
 import CNewJob from './CNewJob'
 //import action from actions
 
@@ -17,11 +13,7 @@ const CJobs = (props) => {
   useEffect(() => {
     props.getJobData()
   }, [])
-<<<<<<< HEAD
  
-=======
-
->>>>>>> ed24dc654a84f985a8b9dfcb98ab5dc21887eeb8
   //conditional render for is fetch data
   if (props.isFetching) {
     return <alert>Jobs are loading...</alert>
@@ -108,8 +100,4 @@ const mapStateToProps = state => {
   }
 }
 
-<<<<<<< HEAD
 export default connect(mapStateToProps, { getJobData, editJobData, deleteJobPost })(CJobs)
-=======
-export default connect(mapStateToProps, { getJobData, editJobData })(CJobs)
->>>>>>> ed24dc654a84f985a8b9dfcb98ab5dc21887eeb8

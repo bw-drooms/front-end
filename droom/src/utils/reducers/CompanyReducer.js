@@ -1,5 +1,5 @@
 //import actions to use
-import { C_JOB_DATA, C_JOB_FETCH_SUCCESS, C_JOB_FETCH_FAILED } from '../actions'
+import { C_JOB_DATA, C_JOB_FETCH_SUCCESS, C_JOB_FETCH_FAILED, DELETE_C_JOB, DELETE_C_JOB_FAILED } from '../actions'
 //sets initial state
 const initialState = {
     jobs: [],
