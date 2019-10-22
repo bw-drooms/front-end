@@ -5,7 +5,7 @@ import CNewJob from './CNewJob'
 //import action from actions
 
 const CJobs = (props) => {
-    // state for conditional render of form 
+  // state for conditional render of form 
   const [editing, setEditing] = useState(false)
   const [jobToEdit, setJobToEdit] = useState();
 
@@ -24,70 +24,71 @@ const CJobs = (props) => {
       Positions Offered
       <div className='company-jobs'>
         {props.jobs.map(jobs => (
-            <div className='company-jobs-head' key={jobs.id} id={jobs.id}>
-               <button>x</button>
-              <h4>{jobs.position} @ <t/> {jobs.company_name}</h4>
-              <p>{jobs.location}</p>
-              <p>{jobs.company_industry} <br/> {jobs.pay_range}</p>
-              <div className='company-jobs-description toggle'>
-                <p>description  :  <br />{jobs.description}</p>
+          <div className='company-jobs-head' key={jobs.id} id={jobs.id}>
+            <h4>{jobs.position} @ <t /> {jobs.company_name}</h4>
+            <p>{jobs.location}</p>
+            <p>{jobs.company_industry} <br /> {jobs.pay_range}</p>
+            <div className='company-jobs-description toggle'>
+              <p>description  :  <br />{jobs.description}</p>
               <div className='button-row'>
                 <button>edit</button>
-                <button>save</button>
+                <button>x</button>
               </div>
+            </div>
+            ))}
+        {/* <div>
+          {editing && (
+            <form onSubmit={}>
+              {/* NEEDS handle and onchange */}
+            <legend>Change Job Details</legend>
+            <label>
+              Location:
+   <input
+                type='text'
+                name='location'
+              // value={companyJobs.location}
+              // onChange={handle}
+              />
+            </label>
+            <label>
+              Position:
+   <input
+                type='text'
+                name='position'
+              // value={companyJobs.position}
+              // onChange={handle}
+              />
+            </label>
+            <label>
+              Salary Offer:
+   <input
+                type='text'
+                name='pay_range'
+              // value={companyJobs.pay_range}
+              // onChange={handle}
+              />
+            </label>
+            <label>
+              Description:
+   <input
+                type='text'
+                name='description'
+              // value={companyJobs.description}
+              // onChange={handle}
+              />
+            </label>
+            {/* <div className="button-row">
+                <button type="submit">save</button>
+                <button onClick={() => setEditing(false)}>cancel</button>
               </div>
-          </div>
-        ))}
-        <div>
-           {props.isUpdating && (
-          <form onSubmit={e => { editJobData() }}
+            </form>
           )}
-        </div>
-        <form onSubmit={props.isUpdating}>
-          {/* NEEDS handle and onchange */}
-          <legend>Change Job Details</legend>
-          <label>
-            Location:
-            <input
-              type='text'
-              name='location'
-            // value={companyJobs.location}
-            // onChange={handle}
-            />
-          </label>
-          <label>
-            Position:
-            <input
-              type='text'
-              name='position'
-            // value={companyJobs.position}
-            // onChange={handle}
-            />
-          </label>
-          <label>
-            Salary Offer:
-            <input
-              type='text'
-              name='pay_range'
-            // value={companyJobs.pay_range}
-            // onChange={handle}
-            />
-          </label>
-          <label>
-            Description:
-            <input
-              type='text'
-              name='description'
-            // value={companyJobs.description}
-            // onChange={handle}
-            />
-          </label>
-          <button type='submit'>Submit</button>
-        </form>
-       
-          <div className='newJobForm'>
-            {/* <CNewJob /> */}
-          </div>
+        </div>  */}
+            <div className='newJobForm'>
+              {/* <CNewJob /> */}
+            </div>
+      
+      </div>
       </div>
     </div>
   )
