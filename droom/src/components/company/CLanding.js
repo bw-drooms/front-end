@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import CJobForm from './CJobs'
+import CJobs from './CJobs'
 import CProfile from './CProfile'
 
 const CLanding = () => {
