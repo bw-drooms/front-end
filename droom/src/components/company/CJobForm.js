@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { getJobData } from '../../utils/actions'
 //import action from actions
 
-const C_JobForm = () => {
+const CJobForm = () => {
+  //temporary state for visual test will delete
   const [jobs, setJobs] = useState([
     {
       "id": 2,
@@ -17,19 +19,17 @@ const C_JobForm = () => {
       "company_industry": "information technology",
       "number_of_employees": 500
     }])
+//use effect for call for data
+useEffect(() => {
+  getJobData()
+}, [])
 
-  const handle = e => {
-    setJobs({ ...jobs, [e.target.name]: e.target.value })
+
+//conditional render for is fetch data
+  if (props.isFetching) {
+    return <alert>Jobs are loading...</alert>
   }
-  const cJForm = e => {
-    // axiosWithAuth()
-    //   .post(``, addJob)
-    //   .then(res => {
-    //     console.log('Add New Job', res.data)
-    //     setter()
-    //   })
-    //   .catch(err => console.log(err))
-  }
+  //standard functional return 
   return (
     <div>
       <div className='company-jobs'>
@@ -55,8 +55,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='location'
-              value={companyJobs.location}
-              onChange={handle}
+              // value={companyJobs.location}
+              // onChange={handle}
             />
           </label>
           <label>
@@ -64,8 +64,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='position'
-              value={companyJobs.position}
-              onChange={handle}
+              // value={companyJobs.position}
+              // onChange={handle}
             />
           </label>
           <label>
@@ -73,8 +73,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='pay_range'
-              value={companyJobs.pay_range}
-              onChange={handle}
+              // value={companyJobs.pay_range}
+              // onChange={handle}
             />
           </label>
           <label>
@@ -82,8 +82,8 @@ const C_JobForm = () => {
             <input
               type='text'
               name='description'
-              value={companyJobs.description}
-              onChange={handle}
+              // value={companyJobs.description}
+              // onChange={handle}
             />
           </label>
           <button type='submit'>Submit</button>
@@ -102,4 +102,4 @@ const mapStateToProps = state => {
    }
  }
  
- export default connect(mapStateToProps, null)(CJobForm) 
+ export default connect(mapStateToProps, {getJobData})(CJobForm) 
