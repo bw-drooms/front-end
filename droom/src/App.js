@@ -7,7 +7,7 @@ import cardStream from './components/seeker/SCardStream'
 import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import SeekerProfile from './components/seeker/seekerProfile'
+import SeekerProfile from './components/seeker/SProfile'
 
 function App() {
   return (
