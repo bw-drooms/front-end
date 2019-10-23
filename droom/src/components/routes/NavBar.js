@@ -7,12 +7,12 @@ export default function NavBar() {
         <div className="Nav-bar">
             <nav>
                 <Link to="/">Login</Link>
-                <Link to="/profile">Profile</Link>
-                <Link to="/jobs">Jobs</Link>
                 <Link to="/dashboard">Dashboard</Link>
+                <Link to="/profile">Corporations</Link>
                 <Link to="/logout">Logout</Link>
-                <Link to='/profile'>CPROFILE</Link>
-                <Link to='/company-landing'>Companies</Link>
+                <Link to='/company-landing'>Company With Job</Link>
+                <Link to="/jobs">Jobs</Link>
+               
             </nav>
         </div>
     )
