@@ -1,5 +1,5 @@
 //import actions to use
-import { C_JOB_DATA, C_JOB_FETCH_SUCCESS, C_JOB_FETCH_FAILED, DELETE_C_JOB, DELETE_C_JOB_FAILED, C_JOB_ADD, C_JOB_ADD_SUCCESS, C_JOB_ADD_FAILED } from '../actions'
+import { C_JOB_DATA, C_JOB_FETCH_SUCCESS, C_JOB_FETCH_FAILED, DELETE_C_JOB, DELETE_C_JOB_FAILED, C_JOB_ADD, C_JOB_ADD_SUCCESS, C_JOB_ADD_FAILED, EDIT_C_JOB_DATA, EDIT_C_JOB_DATA_SUCCESS } from '../actions'
 //sets initial state
 const initialState = {
     jobs: [],
@@ -68,8 +68,22 @@ const companyReducer = (state = initialState, action) => {
                     return {
                         ...state,
                         isUpdating: false,
-                        error: action.payload
+                        error: action.payload,
                     }
+            case EDIT_C_JOB_DATA:
+                return {
+                    ...state,
+                    isFetching: true,
+                    isUpdating: true,
+                    error: '',
+                }
+            case EDIT_C_JOB_DATA_SUCCESS:
+                return {
+                    ...state,
+                    isFetching: false,
+                    isUpdating: false,
+                    error: action.payload,
+                }
         default:
             return state
     }
