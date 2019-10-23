@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 const LoginForm =(props) => {
     const classes = useStyles();  
     const [values, setValues] = useState({
-        email: "",
+        username: "",
         password: ""
     });
 
@@ -44,11 +44,11 @@ const LoginForm =(props) => {
       axiosWithAuth()
       .post('api/login', values)
       .then(res => {
-          console.log('login', res.data)
-          localStorage.setItem('token', res.data.payload)
+          console.log('login', res.data.token)
+          localStorage.setItem('token', res.data.token)
           props.history.push('/jobs')
-       .catch(err => console.log('Login Error', err))
        })
+       .catch(err => console.log('Login Error', err))
     }
 
     const handleChange = event => {
@@ -59,12 +59,12 @@ const LoginForm =(props) => {
         <div className="login-form">
             <form className={classes.container} autoComplete="off" onSubmit={login}>
                 <TextField
-                    id="outlined-email-input"
-                    label="Email"
+                    id="outlined-username-input"
+                    label="username"
                     className={classes.textField}
-                    type="email"
-                    name="email"
-                    autoComplete="email"
+                    type="username"
+                    name="username"
+                    autoComplete="username"
                     margin="normal"
                     variant="outlined"
                     onChange={handleChange}
