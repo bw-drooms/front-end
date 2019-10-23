@@ -11,3 +11,4 @@ export const axiosWithAuth = () => {
         baseURL: "https://droom6.herokuapp.com/"
     });
 }
+
