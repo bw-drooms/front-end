@@ -39,7 +39,8 @@ const LoginForm =(props) => {
     });
 
     const login = e => {
-      e.preventDefult()
+      e.preventDefault()
+      console.log('login', values)
       axiosWithAuth()
       .post('api/login', values)
       .then(res => {
@@ -50,8 +51,8 @@ const LoginForm =(props) => {
        })
     }
 
-    const handleChange = name => event => {
-        setValues({ ...values, [name]: event.target.value });
+    const handleChange = event => {
+        setValues({ ...values, [event.target.name]: event.target.value });
       };
 
     return (
@@ -74,6 +75,7 @@ const LoginForm =(props) => {
                     label="Password"
                     className={classes.textField}
                     type="password"
+                    name='password'
                     autoComplete="current-password"
                     margin="normal"
                     onChange={handleChange}

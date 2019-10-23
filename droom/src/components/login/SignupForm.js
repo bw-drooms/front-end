@@ -46,15 +46,15 @@ export default function SignupForm(props) {
 
     const classes = useStyles();
     const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
+        username: "",
         email: "",
         password: "",
-        userTypes: "",
+        role: "",
     });
 
     const signup = e => {
         e.preventDefault()
+        console.log('values', values)
         axiosWithAuth()
             .post('api/register', users)
             .then(res => {
@@ -64,15 +64,15 @@ export default function SignupForm(props) {
                     .catch(err => console.log('Login Error', err))
             })
     }
-    const handleChange = name => event => {
-        setValues({ ...values, [name]: event.target.value });
+    const handleChange = event => {
+        setValues({ ...values, [event.target.name]: event.target.value });
     };
 
     console.log('signup', signup)
     return (
         <div className="signup-form">
             <form className={classes.container} autoComplete="off" onSubmit={signup}>
-                <TextField
+                {/* <TextField
                     id="outlined-name"
                     label="First Name"
                     className={classes.textField}
@@ -83,13 +83,13 @@ export default function SignupForm(props) {
                     variant="outlined"
                     onChange={handleChange}
                     required
-                />
+                /> */}
                 <TextField
                     id="outlined-name"
-                    label="Last Name"
+                    label="username"
                     className={classes.textField}
                     type="name"
-                    name="name"
+                    name="username"
                     autoComplete="name"
                     margin="normal"
                     variant="outlined"
@@ -113,6 +113,7 @@ export default function SignupForm(props) {
                     label="Password"
                     className={classes.textField}
                     type="password"
+                    name='password'
                     autoComplete="current-password"
                     margin="normal"
                     onChange={handleChange}
@@ -123,8 +124,9 @@ export default function SignupForm(props) {
                     select
                     label="Select User Type"
                     className={classes.textField}
-                    value={values.userTypes}
-                    onChange={handleChange('userTypes')}
+                    value={values.role}
+                    name="role"
+                    onChange={handleChange}
                     SelectProps={{
                         MenuProps: {
                             className: classes.menu,
