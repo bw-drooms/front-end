@@ -24,11 +24,11 @@ export const updateAccountInfo = (
     if (accountType === 'company') {
         url = `/companies/update`;
     } else if (accountType === 'job') {
-        url = `/jobs/update/${account.id}`;
+        url = `/jobseekers/update/${account.id}`;
     }
 
     axiosWithAuth(token)
-        .put(url, { ...account })
+        .put(`api/jobseekers/${[]}`, { ...account }    )
         .then(res => {
             //debugger;
             dispatch(actionCreator(ACCOUNT_INFORMATION_UPDATED, account));
