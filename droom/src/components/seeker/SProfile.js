@@ -60,28 +60,28 @@ getModalContent = props => {
     );
 };
 
-onSubmit = e => {
-    e.preventDefault();
-    //debugger;
-    let profile = {};
-    let errors = [];
-    for (let i = 0; i < e.target.length; i++) {
-        if (!!e.target[i].name) {
-            profile[e.target[i].name] = e.target[i].value;
+// onSubmit = e => {
+//     e.preventDefault();
+//     //debugger;
+//     let profile = {};
+//     let errors = [];
+//     for (let i = 0; i < e.target.length; i++) {
+//         if (!!e.target[i].name) {
+//             profile[e.target[i].name] = e.target[i].value;
 
-            if (e.target[i].value === '') {
-                errors.push(e.target[i].name);
-            }
-        }
-    }
+//             if (e.target[i].value === '') {
+//                 errors.push(e.target[i].name);
+//             }
+//         }
+//     }
 
-    this.props.updateAccountInfo(profile, this.props.token, 'user');
-    this.setState({ modal: false });
-};
+//     this.props.updateAccountInfo(profile,'user');
+//     this.setState({ modal: false });
+// };
 
 render() {
     const { classes } = this.props;
-   console.log(this.props);
+   console.log(classes);
     return (
         <div>
             {/* <h1>{this.props.jobseeker_name}</h1>
@@ -120,8 +120,9 @@ root: {
 };
 
 const mapStateToProps = (state) => {
+    console.log(state)
 return ({
-    classes:state.accountReducer
+    classes:state.accountReducer.account
 }
 )
 }

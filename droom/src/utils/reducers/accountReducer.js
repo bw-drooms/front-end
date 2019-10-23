@@ -50,11 +50,11 @@ export const accountReducer = (state = initialState, action) => {
                     error:null
                 }
             case ACCOUNT_FETCH_SUCCESS:
+                
                 return{
                     ...state,
                     updatingAccountInfo:false,
                     account:action.payload,
-                    error:null,
                 }
         default:
             return state;
