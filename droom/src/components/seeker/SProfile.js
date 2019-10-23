@@ -126,5 +126,5 @@ return ({
 }
 )
 }
-
-export default connect(mapStateToProps,{updateAccountInfo,getAccountInfo})(withStyles(styles)(SeekerProfile));
+const styledUp = connect(mapStateToProps,{updateAccountInfo,getAccountInfo})(SeekerProfile);
+export default withStyles(styles)(styledUp)
