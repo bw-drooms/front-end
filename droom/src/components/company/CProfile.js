@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getCompany } from '../../utils/actions/index'
+import { getCompany, companyJobs, getJobData } from '../../utils/actions/index'
 const CProfile = (props) => {
     useEffect(() => {
         props.getCompany()
     }, [])
+
+    const redirect = (id) => {
+        props.getJobData(id)
+        props.companyJobs(id)
+        props.history.push('/company-landing')
+    }
     return (
         <div>
-            {props.company.map(company => (
-
-            
-            <div className='c-i-i'>
+            {props.company.map(company => ( <div className='c-i-i'id={company.id}>
                 <h4>{company.company_name}</h4>
                 <p className='c-industry'>{company.company_industry}</p>
-                <p className='c-employee'>{company.company_employees}</p>
-                <div>Droom Logo</div>
-                <button>Jobs at this company</button>
+                <button onClick={() => redirect(company.id)}>Jobs at this company</button>
                 {/* will route to landing */}
             </div>
             ))}
@@ -30,4 +31,4 @@ const mapStateToProps = state => {
         error: state.companyReducer.error
     }
 }
-export default connect(mapStateToProps, {getCompany})(CProfile)
+export default connect(mapStateToProps, {getCompany, companyJobs, getJobData})(CProfile)

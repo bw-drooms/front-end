@@ -4,6 +4,19 @@ import axiosWithAuth from '../axiosWithAuth'
 export const COMPANY_FETCH ='COMPANY_FETCH'
 export const COMPANY_FETCH_SUCCESS = 'COMPANY_FETCH_SUCCESS'
 export const COMPANY_FETCH_FAILED = 'COMPANY_FETCH_FAILED'
+export const COMPANY_FETCH_JOB = 'COMPANY_FETCH_JOB'
+
+export const companyJobs = id => dispatch => {
+dispatch({ type:COMPANY_FETCH_JOB })
+axiosWithAuth()
+.get(`https://droom6.herokuapp.com/api/companies/${id}`)
+.then(res => {
+console.log('job specific company', res)
+dispatch({ type: COMPANY_FETCH_SUCCESS, payload: [res.data] })
+})
+.catch(err => console.log('job fetch err', err))
+
+}
 
 export const getCompany = () => dispatch => {
 dispatch({ type: COMPANY_FETCH  })
@@ -20,10 +33,10 @@ export const C_JOB_DATA = 'C_JOB_DATA'
 export const C_JOB_FETCH_SUCCESS = 'C_JOB_FETCH_SUCCESS'
 export const C_JOB_FETCH_FAILED = 'C_JOB_FETCH_FAILED '
 
-export const getJobData = () => dispatch => {
+export const getJobData = (id) => dispatch => {
     dispatch({ type: C_JOB_DATA })
-    axios
-        .get('https://droom6.herokuapp.com/api/jobs')
+    axiosWithAuth()
+        .get(`https://droom6.herokuapp.com/api/jobs/${id}`)
         .then(res => {
             console.log('Initial Call for jobs', res.data)
             dispatch({ type: C_JOB_FETCH_SUCCESS, payload: res.data })

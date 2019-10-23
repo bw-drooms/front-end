@@ -23,10 +23,10 @@ function App() {
         <h1>Droom</h1>
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
-        <Route path='/jobs' component={CJobs}/>
-        <Route path='/company-landing' Component={CLanding}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
+          <LoginPrivate path='/company-landing' Component={CLanding}/>
+          <LoginPrivate path='/jobs' component={CJobs}/>
         </Switch>
       </div>
     </Router>
