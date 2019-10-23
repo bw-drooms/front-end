@@ -21,21 +21,21 @@ class SeekerProfile extends React.Component {
         return (
             <form onSubmit={props.onSubmit}>
                 <InputText
-                    label={'First Name'}
-                    value={props.profile.firstName}
+                    label={'Name'}
+                    value={props.profile.jobseeker_name}
                 />
-                <InputText label={'Last Name'} value={props.profile.lastName} />
+                <InputText label={'Location'} value={props.profile.location} />
                 <InputText
                     label={'Occupation'}
-                    value={props.profile.occupation}
-                />
-                <InputText
-                    label={'Experience'}
-                    value={props.profile.experience}
+                    value={props.profile.general_profession}
                 />
                 <InputText
                     label={'Interests'}
-                    value={props.profile.interests}
+                    value={props.profile.description}
+                />
+                <InputText
+                    label={'LinkedIn'}
+                    value={props.profile.linkedIn}
                 />
                 <Button type={'submit'} text={'Submit'} />
             </form>
@@ -68,7 +68,7 @@ class SeekerProfile extends React.Component {
             <div>
                 
 
-                <h3>{this.props.profile.occupation}</h3>
+                <h3>{this.props.profile.general_profession}</h3>
 
                 <h2>{this.props.profile.lastName}</h2>
                 <h2>{this.props.profile.email}</h2>
