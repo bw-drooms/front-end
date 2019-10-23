@@ -2,9 +2,9 @@
 import { combineReducers } from 'redux'
 //call company reducer
 import companyReducer from './CompanyReducer'
-
+import seekerReducer from './SeekerReducer'
 //combine reducer for calls -set to default
 const rootReducer = combineReducers({
-    companyReducer
+    companyReducer,seekerReducer
 })
 export default rootReducer
