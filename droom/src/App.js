@@ -7,7 +7,7 @@ import cardStream from './components/seeker/SCardStream'
 import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-
+import SeekerProfile from './components/seeker/seekerProfile'
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/cardStream" component={cardStream}/>
         <Route path="/profile" component={CProfile}/>
         <Route path="/jobs" component={CJobs}/>
+        <Route path="/profile" component={SeekerProfile}/>
       </div>
     </Router>
   );
