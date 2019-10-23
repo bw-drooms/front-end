@@ -14,7 +14,7 @@ import cardStream from './components/seeker/SCardStream'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPrivate from './components/routes/LoginPrivate'
 import NavBar from './components/routes/NavBar';
-
+import SignUpPrivate from './components/routes/SignUpPrivate';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/" component={SignupForm} />
         <Route path='/jobs' component={CJobs}/>
+        <Route path='/SeekerProfile' component={SeekerProfile}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>
