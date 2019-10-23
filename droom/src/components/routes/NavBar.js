@@ -11,6 +11,8 @@ export default function NavBar() {
                 <Link to="/jobs">Jobs</Link>
                 <Link to="/dashboard">Dashboard</Link>
                 <Link to="/logout">Logout</Link>
+                <Link to='/profile'>CPROFILE</Link>
+                <Link to='/company-landing'>Companies</Link>
             </nav>
         </div>
     )
