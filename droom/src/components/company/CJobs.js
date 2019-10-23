@@ -41,6 +41,8 @@ const useStyles = makeStyles(theme => ({
 // END ---- Material UI - Card Styling
 
 const CJobs = (props) => {
+  console.log('single job props', props)
+  console.log('singlejobs', props.jobs)
 
   const classes = useStyles();// MUI Styling classes
 
@@ -72,7 +74,7 @@ useEffect(() => {
   }
 }, [editing])
 //conditional render for is fetch data
-if (props.isFetching) {
+if (!props.jobs) {
   return <div>Jobs are loading...</div>
 }
 //standard functional return 
@@ -97,7 +99,7 @@ return (
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <p>Location: {jobs.location}</p>
-          <p>{jobs.company_industry}</p> <p> Pay: ${jobs.pay_range}</p>
+           <p> Pay: ${jobs.pay_range}</p>
           <p>Description  :  <br />{jobs.description}</p>
 
           </Typography>

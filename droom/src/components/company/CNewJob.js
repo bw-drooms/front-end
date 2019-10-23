@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addCJobPost } from '../../utils/actions'
 
 const CNewJob = (props) => {
-const [newJob, setNewJob] = React.useState({location: '', position: '', pay_range: '', description: ''})
+const [newJob, setNewJob] = React.useState({company_id: props.company_id, location: '', position: '', pay_range: '', description: '', selected: 0})
 
 const handleChange = e => {
 setNewJob({...newJob, [e.target.name]: e.target.value})

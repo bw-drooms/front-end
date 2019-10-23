@@ -7,11 +7,7 @@ const initialState = {
     isFetching: false,
     isUpdating: false,
     error: 'Error Response'
-
 }
-//may need more state
-
-//company reducer
 const companyReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMPANY_FETCH:
@@ -70,11 +66,14 @@ const companyReducer = (state = initialState, action) => {
                         jobs
             }
         case C_JOB_ADD:
+            let newJob = [{...state}]
+            newJob.push(jobs => jobs.id !== action.payload)
             return{
-                ...state,
+                ...newJob,
                 isFetching: true,
                 isUpdating: true,
-                error: ''
+                error: '',
+                job: action.payload
             }
         case C_JOB_ADD_SUCCESS:
             return{
@@ -89,7 +88,7 @@ const companyReducer = (state = initialState, action) => {
                         ...state,
                         isFetching: false,
                         isUpdating: false,
-                        error: action.payload,
+                        error: '',
                     }
             case EDIT_C_JOB_DATA:
                 return {
