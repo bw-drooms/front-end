@@ -44,7 +44,7 @@ export const deleteJobPost = (id) => dispatch => {
 }
 
 
-/*<------------------New C JObs Submit ---------->*/
+/*<------------------New C Jobs Submit ---------->*/
 export const C_JOB_ADD = 'C_JOB_ADD'
 export const C_JOB_ADD_SUCCESS = 'C_JOB_ADD_SUCCESS'
 export const C_JOB_ADD_FAILED = 'C_JOB_ADD_FAILED '
@@ -52,8 +52,8 @@ export const C_JOB_ADD_FAILED = 'C_JOB_ADD_FAILED '
 export const addCJobPost = (job) => dispatch => {
     dispatch({ type: C_JOB_ADD });
     axios
-    .post('', job)
-    then(res => {
+    .post('https://droom6.herokuapp.com/api/jobs', job)
+    .then(res => {
         console.log('New job adding', res)
         dispatch({ type: C_JOB_ADD_SUCCESS, payload: res.data.job })
     })

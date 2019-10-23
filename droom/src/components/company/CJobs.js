@@ -5,6 +5,7 @@ import CNewJob from './CNewJob'
 //import action from actions
 
 const CJobs = (props) => {
+  // const [newSmurf, setNewSmurf] = useState({id: Date.now(), name: '', age: '', height: ''})
   // state for conditional render of form 
   const [editing, setEditing] = useState(false)
   const [jobToEdit, setJobToEdit] = useState();
