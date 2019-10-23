@@ -23,6 +23,7 @@ useEffect(() => {
 useEffect(() => {
   if(props.editJobData) {
     setJobToEdit({
+      id: props.jobs.id,
       location: props.jobs.location, 
       position: props.jobs.position, 
       pay_range: props.jobs.pay_range, 

@@ -18,12 +18,12 @@ export const getJobData = (jobs) => dispatch => {
 /*<------------------EDIT AND DELETE FOR C JOBS ---------->*/
 export const EDIT_C_JOB_DATA = 'EDIT_C_JOB_DATA'
 export const EDIT_C_JOB_DATA_SUCCESS = 'EDIT_C_JOB_DATA_SUCCESS'
-export const editJobData = (id) => dispatch => {
+export const editJobData = (update) => dispatch => {
     dispatch({ type: EDIT_C_JOB_DATA })
     axios
-        .put('https://droom6.herokuapp.com/api/api/jobs/:job_id', id)
+        .put(`https://droom6.herokuapp.com/api/api/jobs/${update.id}`, update)
         .then(res => {
-            console.log('Edited data on job', id)
+            console.log('Edited data on job', update)
             dispatch({ type: EDIT_C_JOB_DATA_SUCCESS, payload: res.data })
         })
         .catch(err => console.log('Edit job err', err))
@@ -52,10 +52,10 @@ export const C_JOB_ADD_FAILED = 'C_JOB_ADD_FAILED '
 export const addCJobPost = (job) => dispatch => {
     dispatch({ type: C_JOB_ADD });
     axios
-    .post('https://droom6.herokuapp.com/api/jobs', job)
-    .then(res => {
-        console.log('New job adding', res)
-        dispatch({ type: C_JOB_ADD_SUCCESS, payload: res.data.job })
-    })
-    .catch(err => dispatch({ type: C_JOB_ADD_FAILED}))
+        .post('https://droom6.herokuapp.com/api/jobs', job)
+        .then(res => {
+            console.log('New job adding', res)
+            dispatch({ type: C_JOB_ADD_SUCCESS, payload: res.data.job })
+        })
+        .catch(err => dispatch({ type: C_JOB_ADD_FAILED }))
 }
