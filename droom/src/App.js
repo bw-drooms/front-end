@@ -22,10 +22,10 @@ function App() {
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
         <Route path='/jobs' component={CJobs}/>
-        
+        <Route path='/SeekerProfile' component={SeekerProfile}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
-          <SignUpPrivate path='/SeekerProfile' component={SeekerProfile}/>
+          
         </Switch>
       </div>
     </Router>

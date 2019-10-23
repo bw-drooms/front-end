@@ -6,6 +6,17 @@ import InputText from './InputText';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
 import { connect } from 'react-redux';
 
+
+//         \"jobseeker_name\": \"Batlyn Stewart\",
+//         \"location\": \"Austin, TX\",
+//         \"general_profession\": \"Full Stack Software Engineer\",
+//         \"description\": \"Black belt in Karate\",
+//         \"linkedIn\": \"\",
+//         \"selected\": 0
+//     }"
+
+
+
 class SeekerProfile extends React.Component {
 state = {
     modal: false,
@@ -28,7 +39,7 @@ getModalContent = props => {
             />
             <InputText label={'Location'} value={props.jobseekers.location} />
             <InputText
-                label={'Proffession'}
+                label={'Profession'}
                 value={props.jobseekers.general_profession}
             />
             <InputText
@@ -65,23 +76,18 @@ onSubmit = e => {
 
 render() {
     const { classes } = this.props;
-    //debugger;
+   console.log(classes);
     return (
         <div>
-            
-
-            <h3>{this.props.jobseekers.general_profession}</h3>
-
-            <h2>{this.props.jobseekers.lastName}</h2>
-            <h2>{this.props.jobseekers.email}</h2>
+            <h1>{this.props.jobseeker_name}</h1>
+            <h2>{this.props[0].location}</h2>
+            <h3>{this.props[0].general_profession}</h3>
+            <h3>{this.props[0].linkedIn}</h3>
+            <h4>{this.props[0].description}</h4>
             {this.props.myProfile ? (
                 <Button
                     onClick={this.handleEditClick}
-                    text={'Edit Profile'}
-                />
-            ) : (
-                ''
-            )}
+                    text={'Edit Profile'}/>) : ('')}
 
             <SimpleModal
                 open={this.state.modal}
