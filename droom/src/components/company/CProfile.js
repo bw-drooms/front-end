@@ -7,14 +7,18 @@ const CProfile = (props) => {
     }, [])
     return (
         <div>
+            {props.company.map(company => (
+
+            
             <div className='c-i-i'>
-                <h4>{props.company.company_name}</h4>
-                <p className='c-industry'>{props.company.company_industry}</p>
-                <p className='c-employee'>{props.company.company_employees}</p>
+                <h4>{company.company_name}</h4>
+                <p className='c-industry'>{company.company_industry}</p>
+                <p className='c-employee'>{company.company_employees}</p>
                 <div>Droom Logo</div>
                 <button>Jobs at this company</button>
                 {/* will route to landing */}
             </div>
+            ))}
         </div>
     )
 }

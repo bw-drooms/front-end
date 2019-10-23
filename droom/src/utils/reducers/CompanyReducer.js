@@ -15,6 +15,11 @@ const initialState = {
 const companyReducer = (state = initialState, action) => {
     switch (action.type) {
         case COMPANY_FETCH:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
         case C_JOB_DATA:
             return {
                 ...state,
@@ -23,6 +28,12 @@ const companyReducer = (state = initialState, action) => {
                 error: ''
             }
         case COMPANY_FETCH_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                company: action.payload
+            }
         case C_JOB_FETCH_SUCCESS:
             return {
                 ...state,
@@ -32,6 +43,11 @@ const companyReducer = (state = initialState, action) => {
                 jobs: action.payload
             }
         case COMPANY_FETCH_FAILED:
+                return {
+                    ...state,
+                    isFetching: false,
+                    error: action.payload
+                }
         case C_JOB_FETCH_FAILED:
             return {
                 ...state,
