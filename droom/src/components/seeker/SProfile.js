@@ -28,7 +28,7 @@ class SeekerProfile extends React.Component {
                 />
                 <InputText label={'Location'} value={props.profile.location} />
                 <InputText
-                    label={'Occupation'}
+                    label={'Proffession'}
                     value={props.profile.general_profession}
                 />
                 <InputText
