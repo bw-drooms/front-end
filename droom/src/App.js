@@ -3,12 +3,9 @@ import './App.css';
 import CJobs from './components/company/CJobs'
 import LoginForm from './components/login/LoginForm';
 import SignupForm from './components//login/SignupForm';
-import cardStream from './components/seeker/SCardStream'
-import CProfile from './components/company/CProfile'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
+
 import SeekerProfile from './components/seeker/SProfile'
-import SignupForm from './components/login/SignupForm';
+
 import cardStream from './components/seeker/SCardStream'
 import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';

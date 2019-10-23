@@ -1,5 +1,5 @@
   
-import {axiosWithAuth} from '../axiosWithAuth'
+import axiosWithAuth from '../axiosWithAuth'
 import actionCreator from './actionCreator';
 
 
