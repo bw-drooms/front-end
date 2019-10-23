@@ -56,13 +56,14 @@ export default function SignupForm(props) {
         e.preventDefault()
         console.log('values', values)
         axiosWithAuth()
-            .post('api/register', users)
+            .post('api/register', values)
             .then(res => {
                 console.log('login', res.data)
                 localStorage.setItem('token', res.data.payload)
                 props.history.push('/jobs')
-                    .catch(err => console.log('Login Error', err))
+
             })
+            .catch(err => console.log('Login Error', err))
     }
     const handleChange = event => {
         setValues({ ...values, [event.target.name]: event.target.value });

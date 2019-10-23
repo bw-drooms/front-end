@@ -6,7 +6,8 @@ const axiosWithAuth = () => {
 
     return axios.create({
         headers: {
-            Authorization: token  /// "bearer"
+            "Authorization": token,
+            "Content-Type": "application/json"
         },
         baseURL: "https://droom6.herokuapp.com/"
     });
