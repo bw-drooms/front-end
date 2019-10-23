@@ -84,3 +84,13 @@ render() {
         </div>
         );
     }}
+    SeekerProfile.propTypes = {};
+
+    function mapStateToProps(state) {
+        return {
+            token: state.appReducer.token,
+            account: state.accountReducer.account,
+        };
+    }
+    
+    export default connect(mapStateToProps,{})(withStyles(styles)(SeekerProfile));
