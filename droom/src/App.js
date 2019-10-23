@@ -11,7 +11,7 @@ import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPrivate from './components/routes/LoginPrivate'
 import NavBar from './components/routes/NavBar';
-
+import SignUpPrivate from './components/routes/SignUpPrivate';
 
 function App() {
   return (
@@ -22,10 +22,10 @@ function App() {
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
         <Route path='/jobs' component={CJobs}/>
-        <Route path='/profile' component={SeekerProfile}/>
+        
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
-          
+          <SignUpPrivate path='/SeekerProfile' component={SeekerProfile}/>
         </Switch>
       </div>
     </Router>

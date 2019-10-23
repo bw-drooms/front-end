@@ -1,4 +1,3 @@
-  
 import axiosWithAuth from '../axiosWithAuth'
 import actionCreator from './actionCreator';
 
