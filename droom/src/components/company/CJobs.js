@@ -56,9 +56,7 @@ const edit = e => {
   props.editJobData(jobToEdit)
 }
 
-useEffect(() => {
-  props.getJobData()
-}, [])
+
 //use effect conditional for job data
 useEffect(() => {
   if(props.editJobData) {
@@ -75,7 +73,7 @@ useEffect(() => {
 }, [editing])
 //conditional render for is fetch data
 if (props.isFetching) {
-  return <alert>Jobs are loading...</alert>
+  return <div>Jobs are loading...</div>
 }
 //standard functional return 
 return (
