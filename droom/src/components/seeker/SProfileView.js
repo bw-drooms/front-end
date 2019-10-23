@@ -5,6 +5,8 @@ import SimpleModal from './SimpleModal';
 import SeekerProfile from './SProfile';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 class SeekerProfile extends Component {
     state = {
@@ -63,3 +65,22 @@ componentDidMount() {
             console.log(err.message);
         });
 }
+render() {
+    //debugger;
+    const { classes } = this.props;
+    return (
+        <div className={classes.root}>
+        <Grid item
+        xs={12}
+        sm={6}
+        md={4}
+        className={classes.profileCenterGrid}>
+        {this.state.profileType === 'user' ? 
+        (<UserProfile
+                profile={this.state.profile}
+                myProfile={this.state.myProfile}
+            />) : ('')}
+        </Grid>
+        </div>
+        );
+    }}
