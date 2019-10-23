@@ -3,6 +3,7 @@ import './App.css';
 import CJobs from './components/company/CJobs'
 import LoginForm from './components/login/LoginForm';
 import SignupForm from './components//login/SignupForm';
+import CApplicantList from './components/company/CApplicantList';
 
 import SeekerProfile from './components/seeker/SProfile'
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/jobs' component={CJobs}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
+          <LoginPrivate path='/applicants' component={CApplicantList}/>
         </Switch>
       </div>
     </Router>
