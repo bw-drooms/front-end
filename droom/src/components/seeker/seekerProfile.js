@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles,Button } from '@material-ui/core';
+import { withStyles, Button } from '@material-ui/core';
 import SimpleModal from './SimpleModal';
 import InputText from './InputText';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
@@ -18,7 +18,9 @@ class SeekerProfile extends React.Component {
     };
 
     getModalContent = props => {
+        console.log(this.getModalContent);
         return (
+           
             <form onSubmit={props.onSubmit}>
                 <InputText
                     label={'Name'}

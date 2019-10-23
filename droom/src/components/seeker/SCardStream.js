@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Swipeable from "react-swipy";
 import {getSeekerJobs} from "../../utils/actions/seeker";
 import { Card, Button } from '@material-ui/core';
-import jobCard from "./SJobCard"
+import jobCard from "./SJobCard";
 const appStyles = {
     height: "100%",
     display: "flex",
