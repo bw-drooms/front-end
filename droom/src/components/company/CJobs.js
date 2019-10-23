@@ -3,8 +3,47 @@ import { connect } from 'react-redux'
 import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
 import CNewJob from './CNewJob'
 
+// START ---- Material UI - Card Styling
+
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import droom from '../../images/droomLogo_dark.png'
+// MUI - Grid Styling
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles(theme => ({
+  card: {
+    maxWidth: 345,
+    fontSize: 7
+  },
+  media: {
+    height: 140,
+  },
+
+  // MUI - Grid Styling
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
+// END ---- Material UI - Card Styling
 
 const CJobs = (props) => {
+
+  const classes = useStyles();// MUI Styling classes
+
   const [editing, setEditing] = useState(false)
   const [jobToEdit, setJobToEdit] = useState({ location: props.jobs.location, position: props.jobs.position, pay_range: props.jobs.pay_range, description: props.jobs.description });
 //writes editing modal and form data to edit
@@ -38,20 +77,40 @@ if (props.isFetching) {
 }
 //standard functional return 
 return (
+  <>
   <div>
     Positions Offered
-      <div className='company-jobs'>
+    <div className={classes.root}>
+      <Grid container spacing={3}>
       {props.jobs.map(jobs => (
-        <div className='company-jobs-head' id={jobs.id}>
-          <h4>{jobs.position} @ <t /> {jobs.company_name}</h4>
-          <p>{jobs.location}</p>
-          <p>{jobs.company_industry} <br /> {jobs.pay_range}</p>
-          <p>description  :  <br />{jobs.description}</p>
+        <Grid item xs={3}>
+        <Card className={classes.card} id={jobs.id}>
+          <CardActionArea>
+          <CardMedia
+          className={classes.media}
+          image={droom}
+          title="Company Logo"
+          />
+          <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          {jobs.position} @ <t /> {jobs.company_name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          <p>Location: {jobs.location}</p>
+          <p>{jobs.company_industry}</p> <p> Pay: ${jobs.pay_range}</p>
+          <p>Description  :  <br />{jobs.description}</p>
+
+          </Typography>
+          </CardContent>
+          </CardActionArea>
+          <CardActions>
           <div className='button-row'>
-            <button key={jobs.id} onClick={() => setJobToEdit(jobs.id)}>edit</button>
-            <button onCLick={props.deleteJob}>x</button>
+            <Button key={jobs.id} onClick={() => setJobToEdit(jobs.id)}>edit</Button>
+            <Button onCLick={props.deleteJob}>x</Button>
           </div>
-        </div>
+          </CardActions>
+        </Card>
+        </Grid>
       ))}
       <div className='form-on-edit'>
         {editing && (
@@ -96,11 +155,14 @@ return (
         </form>
          )}
       </div>
-    <button>Post a Position</button>
-    <CNewJob />
-    </div>
+      </Grid>
   </div >
-
+    </div>
+      
+      <Paper className={classes.paper}>
+      <button>Post a Position</button>
+      <CNewJob /></Paper>
+</>
 )
 }
 

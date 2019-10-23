@@ -5,6 +5,7 @@ import CProfile from './components/company/CProfile'
 import CLanding from './components/company/CLanding'
 import LoginForm from './components/login/LoginForm';
 import SignupForm from './components//login/SignupForm';
+import CApplicantList from './components/company/CApplicantList';
 
 import SeekerProfile from './components/seeker/SProfile'
 
@@ -21,12 +22,14 @@ function App() {
       <NavBar />
       <div className="App">
         <h1>Droom</h1>
-        <Route path="/login" component={LoginForm} />
-        <Route path="/signup" component={SignupForm} />
+        <Route exact path="/" component={LoginForm} />
+        <Route exact path="/" component={SignupForm} />
+        <Route path='/jobs' component={CJobs}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>
           <LoginPrivate path='/jobs' component={CJobs}/>
+          <LoginPrivate path='/applicants' component={CApplicantList}/>
         </Switch>
       </div>
     </Router>
