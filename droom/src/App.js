@@ -3,8 +3,8 @@ import './App.css';
 import CJobs from './components/company/CJobs'
 import LoginForm from './components/login/LoginForm';
 import SignupForm from './components/login/SignupForm';
-import cardStream from './components/seeker/SCardStream'
-import CProfile from './components/company/CProfile'
+// import cardStream from './components/seeker/SCardStream'
+// import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPrivate from './components/routes/LoginPrivate'
 import NavBar from './components/routes/NavBar';
