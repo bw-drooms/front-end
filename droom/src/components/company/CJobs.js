@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
-import CNewJob from './CNewJob'
-//import action from actions
+
 
 const CJobs = (props) => {
   const [editing, setEditing] = useState(false)
@@ -12,16 +11,32 @@ const handleChange = e => {
   setJobToEdit({ ...jobToEdit, [e.target.name]: e.target.value })
 }
 
-const submit = e => {
+const edit = e => {
   e.preventDefault()
   props.editJobData(jobToEdit)
 }
 
+const editor = id => {
+  setEditing(true)
+  setJobToEdit(id)
+}
 //use effect for call for data
 useEffect(() => {
   props.getJobData()
 }, [])
 
+useEffect(() => {
+  if(props.editJobData) {
+    return {
+      location: props.jobs.location, 
+      position: props.jobs.position, 
+      pay_range: props.jobs.pay_range, 
+      description: props.jobs.description 
+    }
+  } else {
+
+  }
+})
 //conditional render for is fetch data
 if (props.isFetching) {
   return <alert>Jobs are loading...</alert>
@@ -32,65 +47,60 @@ return (
     Positions Offered
       <div className='company-jobs'>
       {props.jobs.map(jobs => (
-        <div className='company-jobs-head' key={jobs.id} id={jobs.id}>
+        <div className='company-jobs-head' id={jobs.id}>
           <h4>{jobs.position} @ <t /> {jobs.company_name}</h4>
           <p>{jobs.location}</p>
           <p>{jobs.company_industry} <br /> {jobs.pay_range}</p>
           <p>description  :  <br />{jobs.description}</p>
           <div className='button-row'>
-            <button>edit</button>
+            <button key={jobs.id} onClick={() => jobToEdit(jobs.id)}>edit</button>
             <button onCLick={props.deleteJob}>x</button>
           </div>
         </div>
       ))}
 
       <div className='form-on-edit'>
-        {/* {editing && ( */}
-        <form>
-          {/* NEEDS handle and onchange */}
+        {editing && (
+        <form onSubmit={edit}>
           <legend>Change Job Details</legend>
           <label>
-            Location:
-    <input
+            Location: <input
               type='text'
               name='location'
-            // value={companyJobs.location}
-            // onChange={handle}
+              value={props.jobs.location}
+              onChange={handleChange}
             />
           </label>
           <label>
-            Position:
-    <input
+            Position: <input
               type='text'
               name='position'
-            // value={companyJobs.position}
-            // onChange={handle}
+              value={props.jobs.position}
+              onChange={handleChange}
             />
           </label>
           <label>
-            Salary Offer:
-    <input
+            Salary Offer: <input
               type='text'
               name='pay_range'
-            // value={companyJobs.pay_range}
-            // onChange={handle}
+              value={props.jobs.pay_range}
+              onChange={handleChange}
             />
           </label>
           <label>
-            Description:
-    <input
+            Description: <input
               type='text'
               name='description'
-            // value={companyJobs.description}
-            // onChange={handle}
+              value={props.jobs.descrition}
+              onChange={handleChange}
             />
           </label>
           <div className="button-row">
             <button type="submit">save</button>
-            <button >cancel</button>
+            <button onClick={() => setEditing(false)}>cancel</button>
           </div>
         </form>
-        {/* )} */}
+         )}
       </div>
     </div>
   </div >
