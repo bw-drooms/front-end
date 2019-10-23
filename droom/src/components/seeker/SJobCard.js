@@ -7,12 +7,9 @@ const JobCard = props => {
     const { classes } = props;
 
     return (
-        <CardDetails
-            title={props.account.jobTitle}
-            subheader={props.account.jobPosition}
-            chips={props.account.jobTags}
-            discription={props.account.jobDescription}
-        />
+        <CardDetails>
+        
+        </CardDetails>
     );
 };
 

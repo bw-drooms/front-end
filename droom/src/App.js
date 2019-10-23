@@ -2,7 +2,10 @@ import React from 'react';
 import './App.css';
 import CJobs from './components/company/CJobs'
 import LoginForm from './components/login/LoginForm';
-import SignupForm from './components/login/SignupForm';
+import SignupForm from './components//login/SignupForm';
+
+import SeekerProfile from './components/seeker/SProfile'
+
 import cardStream from './components/seeker/SCardStream'
 import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';

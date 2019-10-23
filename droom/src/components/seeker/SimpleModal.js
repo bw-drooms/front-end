@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Typography, Button, Modal } from '@material-ui/core';
+import { withStyles, Typography, Modal } from '@material-ui/core';
 
 function getModalStyle() {
     const top = 50;
