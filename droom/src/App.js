@@ -8,6 +8,13 @@ import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import SeekerProfile from './components/seeker/SProfile'
+import SignupForm from './components/login/SignupForm';
+import cardStream from './components/seeker/SCardStream'
+import CProfile from './components/company/CProfile'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LoginPrivate from './components/routes/LoginPrivate'
+import NavBar from './components/routes/NavBar';
+
 
 function App() {
   return (
@@ -15,12 +22,12 @@ function App() {
       <NavBar />
       <div className="App">
         <h1>Droom</h1>
-        <Route path="/login" component={LoginForm}/>
-        <Route path="/signup" component={SignupForm}/>
-        <Route path="/cardStream" component={cardStream}/>
-        <Route path="/profile" component={CProfile}/>
-        <Route path="/jobs" component={CJobs}/>
-        <Route path="/profile" component={SeekerProfile}/>
+        <Route path="/login" component={LoginForm} />
+        <Route path="/signup" component={SignupForm} />
+        <Switch>
+          <LoginPrivate path='/jobs' component={CJobs} />
+          
+        </Switch>
       </div>
     </Router>
   );
