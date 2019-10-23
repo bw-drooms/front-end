@@ -17,7 +17,6 @@ const CProfile = (props) => {
                 <h4>{company.company_name}</h4>
                 <p className='c-industry'>{company.company_industry}</p>
                 <button onClick={() => redirect(company.id)}>Jobs at this company</button>
-                {/* will route to landing */}
             </div>
             ))}
         </div>

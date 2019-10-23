@@ -25,7 +25,7 @@ function App() {
         <Route path="/signup" component={SignupForm} />
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
-          <LoginPrivate path='/company-landing' Component={CLanding}/>
+          <LoginPrivate path='/company-landing' component={CLanding}/>
           <LoginPrivate path='/jobs' component={CJobs}/>
         </Switch>
       </div>

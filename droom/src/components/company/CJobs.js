@@ -17,9 +17,7 @@ const edit = e => {
   props.editJobData(jobToEdit)
 }
 
-useEffect(() => {
-  props.getJobData()
-}, [])
+
 //use effect conditional for job data
 useEffect(() => {
   if(props.editJobData) {
