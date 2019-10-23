@@ -6,37 +6,32 @@ import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
 const CJobs = (props) => {
   const [editing, setEditing] = useState(false)
   const [jobToEdit, setJobToEdit] = useState({ location: props.jobs.location, position: props.jobs.position, pay_range: props.jobs.pay_range, description: props.jobs.description });
-
+//writes editing modal and form data to edit
 const handleChange = e => {
   setJobToEdit({ ...jobToEdit, [e.target.name]: e.target.value })
 }
-
+//handles input change for job data edit
 const edit = e => {
   e.preventDefault()
   props.editJobData(jobToEdit)
 }
 
-const editor = id => {
-  setEditing(true)
-  setJobToEdit(id)
-}
-//use effect for call for data
 useEffect(() => {
   props.getJobData()
 }, [])
-
+//use effect conditional for job data
 useEffect(() => {
   if(props.editJobData) {
-    return {
+    setJobToEdit({
       location: props.jobs.location, 
       position: props.jobs.position, 
       pay_range: props.jobs.pay_range, 
       description: props.jobs.description 
-    }
+    })
   } else {
-
+    setEditing(false)
   }
-})
+}, [editing])
 //conditional render for is fetch data
 if (props.isFetching) {
   return <alert>Jobs are loading...</alert>

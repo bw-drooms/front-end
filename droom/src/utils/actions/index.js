@@ -21,7 +21,7 @@ export const EDIT_C_JOB_DATA_SUCCESS = 'EDIT_C_JOB_DATA_SUCCESS'
 export const editJobData = (id) => dispatch => {
     dispatch({ type: EDIT_C_JOB_DATA })
     axios
-        .put('', id)
+        .put('https://droom6.herokuapp.com/api/api/jobs/:job_id', id)
         .then(res => {
             console.log('Edited data on job', id)
             dispatch({ type: EDIT_C_JOB_DATA_SUCCESS, payload: res.data })
