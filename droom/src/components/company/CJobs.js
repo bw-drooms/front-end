@@ -43,68 +43,6 @@ return (
   <div>
     Positions Offered
       <div className='company-jobs'>
-<<<<<<< HEAD
-        {props.jobs.map(jobs => (
-          <div className='company-jobs-head' key={jobs.id} id={jobs.id}>
-            <h4>{jobs.position} @ <t /> {jobs.company_name}</h4>
-            <p>{jobs.location}</p>
-            <p>{jobs.company_industry} <br /> {jobs.pay_range}</p>
-            <p>description  :  <br />{jobs.description}</p>
-            <div className='button-row'>
-              <button>edit</button>
-              <button>x</button>
-            </div>
-          </div>
-          ))}
-      
-          <div className='form-on-edit'>
-            {editing && (
-              <form>
-                {/* NEEDS handle and onchange */}
-                <legend>Change Job Details</legend>
-                <label>
-                  Location:
-    <input
-                    type='text'
-                    name='location'
-                  // value={companyJobs.location}
-                  // onChange={handle}
-                  />
-                </label>
-                <label>
-                  Position:
-    <input
-                    type='text'
-                    name='position'
-                  // value={companyJobs.position}
-                  // onChange={handle}
-                  />
-                </label>
-                <label>
-                  Salary Offer:
-    <input
-                    type='text'
-                    name='pay_range'
-                  // value={companyJobs.pay_range}
-                  // onChange={handle}
-                  />
-                </label>
-                <label>
-                  Description:
-    <input
-                    type='text'
-                    name='description'
-                  // value={companyJobs.description}
-                  // onChange={handle}
-                  />
-                </label>
-                <div className="button-row">
-                  <button type="submit">save</button>
-                  <button >cancel</button>
-                </div>
-              </form>
-            )}
-=======
       {props.jobs.map(jobs => (
         <div className='company-jobs-head' id={jobs.id}>
           <h4>{jobs.position} @ <t /> {jobs.company_name}</h4>
@@ -114,7 +52,6 @@ return (
           <div className='button-row'>
             <button key={jobs.id} onClick={() => setJobToEdit(jobs.id)}>edit</button>
             <button onCLick={props.deleteJob}>x</button>
->>>>>>> 44f69783a6f629345d98a91ddd3f329cd5004567
           </div>
         </div>
       ))}
