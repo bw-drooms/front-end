@@ -84,7 +84,7 @@ render() {
    console.log(classes);
     return (
         <div>
-            <h1>"Hello"{this.props.jobseeker_name}</h1>
+            {/* <h1>"Hello"{this.props.jobseeker_name}</h1>
             <h2>{this.props.location}</h2>
             <h3>{this.props.general_profession}</h3>
             <h3>{this.props.linkedIn}</h3>
@@ -102,7 +102,7 @@ render() {
                 title={'Account Information'}
                 subtitle={'Please fill out the form below.'}
                 profile={this.props.profile}
-            />
+            /> */}
         </div>
     );
 }
