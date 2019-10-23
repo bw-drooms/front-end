@@ -69,17 +69,13 @@ render() {
     const { classes } = this.props;
     return (
         <div className={classes.root}>
-        <Grid item
-        xs={12}
-        sm={6}
-        md={4}
-        className={classes.profileCenterGrid}>
+     
         {this.state.profileType === 'user' ? 
         (<SeekerProfile
                 profile={this.state.profile}
                 myProfile={this.state.myProfile}
             />) : ('')}
-        </Grid>
+    
         </div>
         );
     }}

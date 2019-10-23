@@ -4,6 +4,8 @@ import {
     ERROR,
     LOGGED_IN,
     LOGGED_OUT,
+    GETTING_ACCOUNT_INFO,
+    ACCOUNT_FETCH_SUCCESS
 } from '../actions/accountActions';
 
 const initialState = {
@@ -41,6 +43,19 @@ export const accountReducer = (state = initialState, action) => {
                 updatingAccountInfo: false,
                 error: action.payload,
             };
+            case GETTING_ACCOUNT_INFO:
+                return{
+                    ...state,
+                    updatingAccountInfo:true,
+                    error:null
+                }
+            case ACCOUNT_FETCH_SUCCESS:
+                return{
+                    ...state,
+                    updatingAccountInfo:false,
+                    account:action.payload,
+                    error:null,
+                }
         default:
             return state;
     }

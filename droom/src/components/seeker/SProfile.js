@@ -5,15 +5,17 @@ import SimpleModal from './SimpleModal';
 import InputText from './InputText';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
 import { connect } from 'react-redux';
-
-
+import accountReducer from '../../utils/reducers/accountReducer'
+import {getAccountInfo} from '../../utils/actions/accountActions'
 //         \"jobseeker_name\": \"Batlyn Stewart\",
 //         \"location\": \"Austin, TX\",
 //         \"general_profession\": \"Full Stack Software Engineer\",
 //         \"description\": \"Black belt in Karate\",
 //         \"linkedIn\": \"\",
 //         \"selected\": 0
-//     }"
+//     }
+
+
 
 
 
@@ -21,6 +23,9 @@ class SeekerProfile extends React.Component {
 state = {
     modal: false,
 };
+componentDidMount() {
+    this.props.getAccountInfo()
+}
 
 handleEditClick = () => {
     this.setState(state => {
@@ -76,14 +81,14 @@ onSubmit = e => {
 
 render() {
     const { classes } = this.props;
-   console.log(classes);
+   console.log(this.props);
     return (
         <div>
-            <h1>{this.props.jobseeker_name}</h1>
-            <h2>{this.props[0].location}</h2>
-            <h3>{this.props[0].general_profession}</h3>
-            <h3>{this.props[0].linkedIn}</h3>
-            <h4>{this.props[0].description}</h4>
+            {/* <h1>{this.props.jobseeker_name}</h1>
+            <h2>{this.props.location}</h2>
+            <h3>{this.props.general_profession}</h3>
+            <h3>{this.props.linkedIn}</h3>
+            <h4>{this.props.description}</h4> */}
             {this.props.myProfile ? (
                 <Button
                     onClick={this.handleEditClick}
@@ -114,10 +119,11 @@ root: {
 },
 };
 
-const mapStateToProps = state => {
-return {
-    
-};
-};
+const mapStateToProps = (state) => {
+return ({
+    classes:state.accountReducer
+}
+)
+}
 
-export default connect(mapStateToProps,{updateAccountInfo})(withStyles(styles)(SeekerProfile));
+export default connect(mapStateToProps,{updateAccountInfo,getAccountInfo})(withStyles(styles)(SeekerProfile));
