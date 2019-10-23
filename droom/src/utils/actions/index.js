@@ -5,7 +5,7 @@ export const C_JOB_DATA = 'C_JOB_DATA'
 export const C_JOB_FETCH_SUCCESS = 'C_JOB_FETCH_SUCCESS'
 export const C_JOB_FETCH_FAILED = 'C_JOB_FETCH_FAILED '
 
-export const getJobData = (jobs) => dispatch => {
+export const getJobData = () => dispatch => {
     dispatch({ type: C_JOB_DATA })
     axios
         .get('https://droom6.herokuapp.com/api/jobs')
@@ -32,13 +32,13 @@ export const editJobData = (update) => dispatch => {
 export const DELETE_C_JOB = 'DELETE_C_JOB'
 export const DELETE_C_JOB_FAILED = 'DELETE_C_JOB_FAILED'
 
-export const deleteJobPost = (id) => dispatch => {
+export const deleteJobPost = (update) => dispatch => {
     dispatch({ type: DELETE_C_JOB });
     axios
-        .put(`https://droom6.herokuapp.com/api/company/${id}/jobs`, id)
+        .put(`https://droom6.herokuapp.com/api/company/${update.id}/jobs`, update)
         .then(res => {
             console.log('removing filled position', res.data)
-            dispatch({ type: DELETE_C_JOB, payload: res.data.id })
+            dispatch({ type: DELETE_C_JOB, payload: res.data })
         })
         .catch(err => dispatch({ type: DELETE_C_JOB_FAILED }))
 }

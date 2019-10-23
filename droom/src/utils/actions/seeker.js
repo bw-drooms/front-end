@@ -1,5 +1,4 @@
-import {axiosWithAuth} from '../axiosWithAuth'
-
+import axiosWithAuth from '../axiosWithAuth'
 export const S_JOB_DATA = 'S_JOB_DATA'
 export const S_JOB_FETCH_SUCCESS = 'S_JOB_FETCH_SUCCESS'
 export const S_JOB_FETCH_FAILED = 'S_JOB_FETCH_FAILED '

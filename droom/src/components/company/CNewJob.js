@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addCJobPost } from '../../utils/actions'
 
 const CNewJob = (props) => {
-const [newJob, setNewJob] = React.usestate({location: '', position: '', pay_range: '', description: ''})
+const [newJob, setNewJob] = React.useState({location: '', position: '', pay_range: '', description: ''})
 
 const handleChange = e => {
 setNewJob({...newJob, [e.target.name]: e.target.value})
@@ -67,4 +67,4 @@ const mapStateToProps = state => {
     error: state.companyReducer.error
   }
 }
-export default connect(mapStateToProps, addCJobPost)(CNewJob)
+export default connect(mapStateToProps, {addCJobPost})(CNewJob)

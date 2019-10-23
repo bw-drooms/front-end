@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { connect } from 'react-redux'
+import axiosWithAuth from '../../utils/axiosWithAuth'
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,13 +29,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function LoginForm() {
 
+
+const LoginForm =(props) => {
     const classes = useStyles();  
     const [values, setValues] = useState({
         email: "",
         password: ""
     });
+
+    const login = e => {
+      e.preventDefult()
+      axiosWithAuth()
+      .post('/api/register', values)
+      .then(res => {
+          console.log('login', res.data)
+          localStorage.setItem('token', res.data.payload)
+          props.history.push('/jobs')
+       .catch(err => console.log('Login Error', err))
+       })
+    }
 
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
@@ -41,7 +56,7 @@ export default function LoginForm() {
 
     return (
         <div className="login-form">
-            <form className={classes.container} autoComplete="off">
+            <form className={classes.container} autoComplete="off" onSubmit={login}>
                 <TextField
                     id="outlined-email-input"
                     label="Email"
@@ -70,3 +85,9 @@ export default function LoginForm() {
         </div>
     )
 }
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+export default connect(mapStateToProps, null)(LoginForm)

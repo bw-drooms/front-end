@@ -53,6 +53,7 @@ const companyReducer = (state = initialState, action) => {
         case C_JOB_ADD:
             return{
                 ...state,
+                isFetching: true,
                 isUpdating: true,
                 error: ''
             }
@@ -67,6 +68,7 @@ const companyReducer = (state = initialState, action) => {
             case C_JOB_ADD_FAILED:
                     return {
                         ...state,
+                        isFetching: false,
                         isUpdating: false,
                         error: action.payload,
                     }

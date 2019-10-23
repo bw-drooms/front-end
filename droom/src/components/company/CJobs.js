@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
+import CNewJob from './CNewJob'
 
 
 const CJobs = (props) => {
@@ -49,12 +50,11 @@ return (
           <p>{jobs.company_industry} <br /> {jobs.pay_range}</p>
           <p>description  :  <br />{jobs.description}</p>
           <div className='button-row'>
-            <button key={jobs.id} onClick={() => jobToEdit(jobs.id)}>edit</button>
+            <button key={jobs.id} onClick={() => setJobToEdit(jobs.id)}>edit</button>
             <button onCLick={props.deleteJob}>x</button>
           </div>
         </div>
       ))}
-
       <div className='form-on-edit'>
         {editing && (
         <form onSubmit={edit}>
@@ -98,6 +98,8 @@ return (
         </form>
          )}
       </div>
+    <button>Post a Position</button>
+    <CNewJob />
     </div>
   </div >
 

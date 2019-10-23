@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const axiosWithAuth = () => {
+const axiosWithAuth = () => {
 
     const token = localStorage.getItem("token");
 
@@ -11,3 +11,4 @@ export const axiosWithAuth = () => {
         baseURL: "https://droom6.herokuapp.com/"
     });
 }
+export default axiosWithAuth

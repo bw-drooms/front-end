@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axiosWithAuth from '../../utils/axiosWithAuth'
 
 const users = [
     {
@@ -12,6 +13,7 @@ const users = [
         value: "Company",
         label: 'Company'},
 ]
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignupForm() {
+export default function SignupForm(props) {
 
     const classes = useStyles();  
     const [values, setValues] = useState({
@@ -49,13 +51,25 @@ export default function SignupForm() {
         userTypes: "",
     });
 
+    const signup = e => {
+        e.preventDefult()
+        axiosWithAuth()
+        .post('/api/register', users)
+        .then(res => {
+            console.log('login', res.data)
+            localStorage.setItem('token', res.data.payload)
+            props.history.push('/jobs')
+         .catch(err => console.log('Login Error', err))
+         })
+      }
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
       };
 
+     console.log('signup', signup)
     return (
         <div className="signup-form">
-            <form className={classes.container} autoComplete="off">
+            <form className={classes.container} autoComplete="off" onSubmit={signup}>
                 <TextField
                     id="outlined-name"
                     label="First Name"
