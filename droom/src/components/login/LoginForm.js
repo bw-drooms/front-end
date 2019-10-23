@@ -41,7 +41,7 @@ const LoginForm =(props) => {
     const login = e => {
       e.preventDefult()
       axiosWithAuth()
-      .post('/api/register', values)
+      .post('api/login', values)
       .then(res => {
           console.log('login', res.data)
           localStorage.setItem('token', res.data.payload)

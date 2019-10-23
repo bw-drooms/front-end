@@ -7,7 +7,6 @@ import cardStream from './components/seeker/SCardStream'
 import CProfile from './components/company/CProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPrivate from './components/routes/LoginPrivate'
-import SignUpPrivate from './components/routes/SignUpPrivate'
 import NavBar from './components/routes/NavBar';
 
 
@@ -19,12 +18,9 @@ function App() {
         <h1>Droom</h1>
         <Route path="/login" component={LoginForm} />
         <Route path="/signup" component={SignupForm} />
-        <Route path="/cardStream" component={cardStream} />
-        <Route path="/profile" component={CProfile} />
-        <Route path="/jobs" component={CJobs} />
         <Switch>
-          <LoginPrivate path='/jobs' component={LoginForm} />
-          <SignUpPrivate path='/jobs' component={SignupForm} />
+          <LoginPrivate path='/jobs' component={CJobs} />
+          
         </Switch>
       </div>
     </Router>

@@ -8,41 +8,43 @@ import axiosWithAuth from '../../utils/axiosWithAuth'
 const users = [
     {
         value: "Jobseeker",
-        label: 'Jobseeker'},
+        label: 'Jobseeker'
+    },
     {
         value: "Company",
-        label: 'Company'},
+        label: 'Company'
+    },
 ]
 
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '45%',
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
-  menu: {
-    width: 200,
-  },
-  button: {
-    margin: theme.spacing(1),
-    height: 40,
-  }
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '45%',
+    },
+    dense: {
+        marginTop: theme.spacing(2),
+    },
+    menu: {
+        width: 200,
+    },
+    button: {
+        margin: theme.spacing(1),
+        height: 40,
+    }
 }));
 
 export default function SignupForm(props) {
 
-    const classes = useStyles();  
+    const classes = useStyles();
     const [values, setValues] = useState({
         firstName: "",
         lastName: "",
@@ -52,21 +54,21 @@ export default function SignupForm(props) {
     });
 
     const signup = e => {
-        e.preventDefult()
+        e.preventDefault()
         axiosWithAuth()
-        .post('/api/register', users)
-        .then(res => {
-            console.log('login', res.data)
-            localStorage.setItem('token', res.data.payload)
-            props.history.push('/jobs')
-         .catch(err => console.log('Login Error', err))
-         })
-      }
+            .post('api/register', users)
+            .then(res => {
+                console.log('login', res.data)
+                localStorage.setItem('token', res.data.payload)
+                props.history.push('/jobs')
+                    .catch(err => console.log('Login Error', err))
+            })
+    }
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
-      };
+    };
 
-     console.log('signup', signup)
+    console.log('signup', signup)
     return (
         <div className="signup-form">
             <form className={classes.container} autoComplete="off" onSubmit={signup}>
@@ -124,9 +126,9 @@ export default function SignupForm(props) {
                     value={values.userTypes}
                     onChange={handleChange('userTypes')}
                     SelectProps={{
-                    MenuProps: {
-                        className: classes.menu,
-                    },
+                        MenuProps: {
+                            className: classes.menu,
+                        },
                     }}
                     helperText="Please select your user type"
                     margin="normal"
@@ -134,9 +136,9 @@ export default function SignupForm(props) {
                     required
                 >
                     {users.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
                     ))}
                 </TextField>
                 <Button className={classes.button} variant="contained" type="submit">Submit</Button>
