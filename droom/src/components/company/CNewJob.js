@@ -4,14 +4,19 @@ import { addCJobPost } from '../../utils/actions'
 
 const CNewJob = (props) => {
 const [newJob, setNewJob] = React.usestate({location: '', position: '', pay_range: '', description: ''})
+
 const handleChange = e => {
 setNewJob({...newJob, [e.target.name]: e.target.value})
+}
+
+const submit = e => {
+  e.preventDefault()
+  props.addCJobPost(newJob)
 }
   //needs post for endpoint action
     return (
         <div>
-            <form onSubmit={props.isUpdating}>
-          {/* NEEDS handle and onchange */}
+            <form onSubmit={submit}>
           <legend>Fill a Position</legend>
           <label>
             Location:
