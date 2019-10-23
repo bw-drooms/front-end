@@ -3,60 +3,76 @@ import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axiosWithAuth from '../../utils/axiosWithAuth'
 
 const users = [
     {
         value: "Jobseeker",
-        label: 'Jobseeker'},
+        label: 'Jobseeker'
+    },
     {
         value: "Company",
-        label: 'Company'},
+        label: 'Company'
+    },
 ]
 
+
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '45%',
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
-  menu: {
-    width: 200,
-  },
-  button: {
-    margin: theme.spacing(1),
-    height: 40,
-  }
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '45%',
+    },
+    dense: {
+        marginTop: theme.spacing(2),
+    },
+    menu: {
+        width: 200,
+    },
+    button: {
+        margin: theme.spacing(1),
+        height: 40,
+    }
 }));
 
-export default function SignupForm() {
+export default function SignupForm(props) {
 
-    const classes = useStyles();  
+    const classes = useStyles();
     const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
+        username: "",
         email: "",
         password: "",
-        userTypes: "",
+        role: "",
     });
 
-    const handleChange = name => event => {
-        setValues({ ...values, [name]: event.target.value });
-      };
+    const signup = e => {
+        e.preventDefault()
+        console.log('values', values)
+        axiosWithAuth()
+            .post('api/register', users)
+            .then(res => {
+                console.log('login', res.data)
+                localStorage.setItem('token', res.data.payload)
+                props.history.push('/jobs')
+                    .catch(err => console.log('Login Error', err))
+            })
+    }
+    const handleChange = event => {
+        setValues({ ...values, [event.target.name]: event.target.value });
+    };
 
+    console.log('signup', signup)
     return (
         <div className="signup-form">
-            <form className={classes.container} autoComplete="off">
-                <TextField
+            <form className={classes.container} autoComplete="off" onSubmit={signup}>
+                {/* <TextField
                     id="outlined-name"
                     label="First Name"
                     className={classes.textField}
@@ -67,13 +83,13 @@ export default function SignupForm() {
                     variant="outlined"
                     onChange={handleChange}
                     required
-                />
+                /> */}
                 <TextField
                     id="outlined-name"
-                    label="Last Name"
+                    label="username"
                     className={classes.textField}
                     type="name"
-                    name="name"
+                    name="username"
                     autoComplete="name"
                     margin="normal"
                     variant="outlined"
@@ -97,6 +113,7 @@ export default function SignupForm() {
                     label="Password"
                     className={classes.textField}
                     type="password"
+                    name='password'
                     autoComplete="current-password"
                     margin="normal"
                     onChange={handleChange}
@@ -107,12 +124,13 @@ export default function SignupForm() {
                     select
                     label="Select User Type"
                     className={classes.textField}
-                    value={values.userTypes}
-                    onChange={handleChange('userTypes')}
+                    value={values.role}
+                    name="role"
+                    onChange={handleChange}
                     SelectProps={{
-                    MenuProps: {
-                        className: classes.menu,
-                    },
+                        MenuProps: {
+                            className: classes.menu,
+                        },
                     }}
                     helperText="Please select your user type"
                     margin="normal"
@@ -120,9 +138,9 @@ export default function SignupForm() {
                     required
                 >
                     {users.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
                     ))}
                 </TextField>
                 <Button className={classes.button} variant="contained" type="submit">Submit</Button>
