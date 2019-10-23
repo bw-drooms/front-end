@@ -84,11 +84,11 @@ render() {
    console.log(classes);
     return (
         <div>
-            {/* <h1>{this.props.jobseeker_name}</h1>
+            <h1>"Hello"{this.props.jobseeker_name}</h1>
             <h2>{this.props.location}</h2>
             <h3>{this.props.general_profession}</h3>
             <h3>{this.props.linkedIn}</h3>
-            <h4>{this.props.description}</h4> */}
+            <h4>{this.props.description}</h4>
             {this.props.myProfile ? (
                 <Button
                     onClick={this.handleEditClick}
