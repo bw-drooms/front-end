@@ -114,4 +114,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps,{updateAccountInfo})(SeekerProfile)
+export default connect(mapStateToProps,{updateAccountInfo})(withStyles(styles)(SeekerProfile));
