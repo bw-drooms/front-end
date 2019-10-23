@@ -1,6 +1,21 @@
 import axios from 'axios'
+import axiosWithAuth from '../axiosWithAuth'
+/*<------------------SPECIFIC COMPANY  FETCH ---------->*/
+export const COMPANY_FETCH ='COMPANY_FETCH'
+export const COMPANY_FETCH_SUCCESS = 'COMPANY_FETCH_SUCCESS'
+export const COMPANY_FETCH_FAILED = 'COMPANY_FETCH_FAILED'
 
-/*<------------------COMPANY JOBS FETCH ---------->*/
+export const getCompany = () => dispatch => {
+dispatch({ type: COMPANY_FETCH  })
+axiosWithAuth()
+.get('https://droom6.herokuapp.com/api/companies')
+.then(res => {
+    console.log('Company Data', res.data)
+    dispatch({ type: COMPANY_FETCH_SUCCESS, payload: res.data })
+})
+.catch(err => console.log('company err', err))
+}
+/*<------------------SPECIFIC COMPANY JOBS FETCH ---------->*/
 export const C_JOB_DATA = 'C_JOB_DATA'
 export const C_JOB_FETCH_SUCCESS = 'C_JOB_FETCH_SUCCESS'
 export const C_JOB_FETCH_FAILED = 'C_JOB_FETCH_FAILED '

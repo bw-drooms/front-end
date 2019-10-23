@@ -36,7 +36,7 @@ useEffect(() => {
 }, [editing])
 //conditional render for is fetch data
 if (props.isFetching) {
-  return <alert>Jobs are loading...</alert>
+  return <div>Jobs are loading...</div>
 }
 //standard functional return 
 return (
