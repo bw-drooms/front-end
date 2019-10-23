@@ -19,8 +19,8 @@ function App() {
       <NavBar />
       <div className="App">
         <h1>Droom</h1>
-        <Route path="/login" component={LoginForm} />
-        <Route path="/signup" component={SignupForm} />
+        <Route exact path="/" component={LoginForm} />
+        <Route exact path="/" component={SignupForm} />
         <Route path='/jobs' component={CJobs}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>

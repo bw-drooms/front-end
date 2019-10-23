@@ -6,8 +6,7 @@ export default function NavBar() {
     return (
         <div className="Nav-bar">
             <nav>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/">Login</Link>
                 <Link to="/profile">Profile</Link>
                 <Link to="/jobs">Jobs</Link>
                 <Link to="/dashboard">Dashboard</Link>
