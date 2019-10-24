@@ -20,6 +20,7 @@ function App() {
         <h1>Droom</h1>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/" component={SignupForm} />
+        <Route path='/SeekerProfile' component={SeekerProfile}/>
         <Switch>
           <LoginPrivate path='/company-profiles' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>

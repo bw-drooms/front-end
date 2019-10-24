@@ -1,22 +1,20 @@
-  
 import axiosWithAuth from '../axiosWithAuth'
 import actionCreator from './actionCreator';
 
-
+export const ACCOUNT_FETCH_SUCCESS ='ACCOUNT_FETCH_SUCCESS'
 export const UPDATING_ACCOUNT_INFO = 'UPDATING_ACCOUNT_INFO';
 export const ACCOUNT_INFORMATION_UPDATED = 'ACCOUNT_INFORMATION_UPDATED';
 export const ERROR = 'ERROR';
 export const REGISTERED = 'REGISTERED';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGGED_OUT = 'LOGGED_OUT';
-
+export const GETTING_ACCOUNT_INFO = 'GETTING_ACCOUNT_INFO';
 let registered = [];
 
 export const updateAccountInfo = (
     account,
-    token,
     accountType
-) => async dispatch => {
+)=> async dispatch => {
     dispatch(actionCreator(UPDATING_ACCOUNT_INFO));
 
     //debugger;
@@ -27,7 +25,7 @@ export const updateAccountInfo = (
         url = `/jobseekers/update/${account.id}`;
     }
 
-    axiosWithAuth(token)
+    axiosWithAuth()
         .put(`api/jobseekers/${[]}`, { ...account }    )
         .then(res => {
             //debugger;
@@ -38,6 +36,17 @@ export const updateAccountInfo = (
             dispatch(actionCreator(ERROR, err));
         });
 };
+        export const getAccountInfo = ()=>dispatch=>{
+            dispatch(actionCreator(GETTING_ACCOUNT_INFO));
+        axiosWithAuth()
+            .get(`https://droom6.herokuapp.com/api/jobseekers/1`).then( res=>{
+                // debugger
+                dispatch(actionCreator(ACCOUNT_FETCH_SUCCESS, res.data));
+            })
+        .catch(err=>{
+            //debugger
+            dispatch(actionCreator(ERROR,err));
+        }) }
 
 export const logOut = () => {
     return actionCreator(LOGGED_OUT);
