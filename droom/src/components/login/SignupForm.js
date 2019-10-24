@@ -4,6 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axiosWithAuth from '../../utils/axiosWithAuth'
+import {Paper, Typography} from '@material-ui/core';
 
 const users = [
     {
@@ -18,6 +19,12 @@ const users = [
 
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        padding: theme.spacing(3, 2),
+        width: '30%',
+        marginLeft: '30px',
+        backgroundColor: '#fbffd8',
+      },
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -26,19 +33,21 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
     },
     textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: '45%',
+        marginLeft: theme.spacing(3),
+        marginRight: theme.spacing(3),
+        width: '80%',
     },
     dense: {
         marginTop: theme.spacing(2),
     },
     menu: {
-        width: 200,
+        width: 500,
     },
     button: {
         margin: theme.spacing(1),
         height: 40,
+        backgroundColor: '#233536',
+        color: 'white',
     }
 }));
 
@@ -57,11 +66,18 @@ export default function SignupForm(props) {
         console.log('values', values)
         axiosWithAuth()
             .post('api/register', values)
-            .then(res => {
-                console.log('login', res.data)
-                localStorage.setItem('token', res.data.payload)
-                props.history.push('/profile')
-
+            .then(() => {
+                const loginObject = {
+                    username: values.username,
+                    password: values.password
+                }
+                axiosWithAuth()
+                    .post('api/login', loginObject)
+                    .then(res => {
+                        console.log('login', res.data.token)
+                        localStorage.setItem('token', res.data.token)
+                        props.history.push('/profile')
+                    })
             })
             .catch(err => console.log('Login Error', err))
     }
@@ -71,20 +87,9 @@ export default function SignupForm(props) {
 
     console.log('signup', signup)
     return (
-        <div className="signup-form">
+        <Paper className={classes.root}>
             <form className={classes.container} autoComplete="off" onSubmit={signup}>
-                {/* <TextField
-                    id="outlined-name"
-                    label="First Name"
-                    className={classes.textField}
-                    type="name"
-                    name="name"
-                    autoComplete="name"
-                    margin="normal"
-                    variant="outlined"
-                    onChange={handleChange}
-                    required
-                /> */}
+                
                 <TextField
                     id="outlined-name"
                     label="username"
@@ -146,6 +151,6 @@ export default function SignupForm(props) {
                 </TextField>
                 <Button className={classes.button} variant="contained" type="submit">Submit</Button>
             </form>
-        </div>
+        </Paper>
     )
 }

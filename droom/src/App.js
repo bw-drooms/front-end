@@ -6,9 +6,6 @@ import CLanding from './components/company/CLanding'
 import LoginForm from './components/login/LoginForm';
 import SignupForm from './components//login/SignupForm';
 import CApplicantList from './components/company/CApplicantList';
-
-import SeekerProfileView from './components/seeker/SProfile'
-
 import cardStream from './components/seeker/SCardStream'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -22,17 +19,17 @@ function App() {
       <NavBar />
       <div className="App">
         <h1>Droom</h1>
-        <Route exact path="/" component={LoginForm} />
-        <Route exact path="/" component={SignupForm} />
-        <Route path='/jobs' component={CJobs}/>
-        <Route path='/SeekerProfileView' component={SeekerProfileView}/>
+        <div className="registration-page">
+          <Route exact path="/" component={LoginForm} />
+          <Route exact path="/" component={SignupForm} />
+        </div>
       
         <Switch>
-          <LoginPrivate path='/cardStream' component={cardStream}/>
+          <LoginPrivate path='/dashboard' component={cardStream}/>
           <LoginPrivate path='/profile' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>
           <LoginPrivate path='/jobs' component={CJobs}/>
-          <LoginPrivate path='/applicants' component={CApplicantList}/>
+          <LoginPrivate path='/applicants/:company/:job' component={CApplicantList}/>
         </Switch>
       </div>
     </Router>
