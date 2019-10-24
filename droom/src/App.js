@@ -8,6 +8,7 @@ import SignupForm from './components//login/SignupForm';
 import CApplicantList from './components/company/CApplicantList';
 import LoginPrivate from './components/routes/LoginPrivate'
 import NavBar from './components/routes/NavBar';
+import SeekerProfile from './components/seeker/SProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 

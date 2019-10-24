@@ -46,7 +46,7 @@ const LoginForm =(props) => {
       .then(res => {
           console.log('login', res.data.token)
           localStorage.setItem('token', res.data.token)
-          props.history.push('/profile')
+          props.history.push('/company-profiles')
        })
        .catch(err => console.log('Login Error', err))
     }
