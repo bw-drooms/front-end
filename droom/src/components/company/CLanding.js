@@ -8,7 +8,7 @@ const CLanding = (props) => {
         <div className='landing-container'>
             <div className='company-display'>
                 {props.company.map(comp => (
-                    <div id={comp.id}>
+                    <div id={comp.id}key={comp.id}>
                         <h2>{comp.company_name}</h2>
                         <p>a {comp.company_industry} company. Overseeing: {comp.number_of_employees}</p>
                     </div>

@@ -46,130 +46,132 @@ const CJobs = (props) => {
   const [editing, setEditing] = useState(false)
   const [jobToEdit, setJobToEdit] = useState({ location: props.jobs.location, position: props.jobs.position, pay_range: props.jobs.pay_range, description: props.jobs.description });
 
-//DATA & REFRESH
-useEffect(() => {
-  props.getJobData()
-}, [props])
-//EDITS
-const startEdit =(jobs) => {
-  setJobToEdit({
-    job_id:jobs.job_id,
-    location: jobs.location, 
-    position: jobs.position, 
-    pay_range: jobs.pay_range, 
-    description: jobs.description })
+  //DATA & REFRESH
+  useEffect(() => {
+    props.getJobData()
+  }, [props])
+  //EDITS
+  const startEdit = (jobs) => {
+    setJobToEdit({
+      job_id: jobs.job_id,
+      location: jobs.location,
+      position: jobs.position,
+      pay_range: jobs.pay_range,
+      description: jobs.description
+    })
     setEditing(true)
-}
-//writes editing modal and form data to edit
-const handleChange = e => {
-  setJobToEdit({ ...jobToEdit, [e.target.name]: e.target.value })
-}
-//handles input change for job data edit
-const edit = e => {
-  e.preventDefault()
-  props.editJobData(jobToEdit)
-}
-const deleteJob = (job) => {
-  props.deleteJobPost(job)
-  .then(res => props.getJobData())
-} 
-//PUSH TO JOB APPLICANTS
-const appRedirect = (jobId) => {
-  // getApplicants()
-  const companyId = props.company.length ? props.company[0].id : 1
-  props.history.push(`/applicants/${companyId}/${jobId}`)
-}
+  }
+  //writes editing modal and form data to edit
+  const handleChange = e => {
+    setJobToEdit({ ...jobToEdit, [e.target.name]: e.target.value })
+  }
+  //handles input change for job data edit
+  const edit = e => {
+    e.preventDefault()
+    props.editJobData(jobToEdit)
+  }
+  const deleteJob = (job) => {
+    props.deleteJobPost(job)
+      .then(res => props.getJobData())
+  }
+  //PUSH TO JOB APPLICANTS
+  const appRedirect = (jobId) => {
+    // getApplicants()
+    const companyId = props.company.length ? props.company[0].id : 1
+    props.history.push(`/applicants/${companyId}/${jobId}`)
+  }
 
-if (!props.jobs) {
-  return <div>Jobs are loading...</div>
-}
-return (
-  <>
-  <div>
-    Positions Offered
+  if (!props.jobs) {
+    return <div>Jobs are loading...</div>
+  }
+  return (
+    <>
+      <div>
+        Positions Offered
     <div className={classes.root}>
-      <Grid container spacing={3}>
-      {props.jobs.map(jobs => (
-        <Grid item xs={3} key={jobs.id}>
-        <Card className={classes.card} id={jobs.id}>
-          <CardActionArea>
-          <CardMedia
-          className={classes.media}
-          image={droom}
-          title="Company Logo"
-          />
-          <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-          {jobs.position} @  {jobs.company_name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          <p>@: {jobs.location}</p>
-          <p>$:{jobs.pay_range}</p>
-          <p>"":  <br />{jobs.description}</p>
-
-          </Typography>
-          </CardContent>
-          </CardActionArea>
-          <CardActions>
-          <div className='button-row'>
-            <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
-            <Button onClick={() => deleteJob(jobs)}>delete</Button>
-            <Button onClick={()=> appRedirect(jobs.job_id)}>applicants</Button>
-          </div>
-          </CardActions>
-        </Card>
-        </Grid>
-      ))}
-      <div className='form-on-edit'>
-        {editing && (
-        <form onSubmit={edit}>
-          <legend>Edit Job Offer</legend>
-          <label>
-            Location: <input
-              type='text'
-              name='location'
-              value={jobToEdit.location}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Position: <input
-              type='text'
-              name='position'
-              value={jobToEdit.position}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Salary Offer: <input
-              type='text'
-              name='pay_range'
-              value={jobToEdit.pay_range}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Description: <input
-              type='text'
-              name='description'
-              value={jobToEdit.description}
-              onChange={handleChange}
-            />
-          </label>
-          <div className="button-row">
-            <button type="submit">save</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
-          </div>
-        </form>
-         )}
+          <Grid container spacing={3}>
+            {props.jobs.map(jobs => (
+              <Grid item xs={3} key={jobs.id}>
+                <Card className={classes.card} id={jobs.id}>
+                  <CardActionArea>
+                    <CardMedia
+                      className={classes.media}
+                      image={droom}
+                      title="Company Logo"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {jobs.position} @  {jobs.company_name}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        <div>
+                          <p>@: {jobs.location}</p>
+                          <p>$:{jobs.pay_range}</p>
+                          <p>"":  <br />{jobs.description}</p>
+                        </div>
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <div className='button-row'>
+                      <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
+                      <Button onClick={() => deleteJob(jobs)}>delete</Button>
+                      <Button onClick={() => appRedirect(jobs.job_id)}>applicants</Button>
+                    </div>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+            <div className='form-on-edit'>
+              {editing && (
+                <form onSubmit={edit}>
+                  <legend>Edit Job Offer</legend>
+                  <label>
+                    Location: <input
+                      type='text'
+                      name='location'
+                      value={jobToEdit.location}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Position: <input
+                      type='text'
+                      name='position'
+                      value={jobToEdit.position}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Salary Offer: <input
+                      type='text'
+                      name='pay_range'
+                      value={jobToEdit.pay_range}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Description: <input
+                      type='text'
+                      name='description'
+                      value={jobToEdit.description}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <div className="button-row">
+                    <button type="submit">save</button>
+                    <button onClick={() => setEditing(false)}>cancel</button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </Grid>
+        </div >
       </div>
-      </Grid>
-  </div >
-    </div>
       <Paper className={classes.paper}>
-      <CNewJob /></Paper>
-</>
-)
+        <CNewJob /></Paper>
+    </>
+  )
 }
 
 const mapStateToProps = state => {
