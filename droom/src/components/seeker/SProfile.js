@@ -75,10 +75,10 @@ onSubmit = e => {
 
 render() {
     const { classes } = this.props;
-   console.log(classes);
+   console.log(this.props);
     return (
-        <div>
-            <h1>{this.props.jobseeker_name}</h1>
+        <div className={classes.root}>
+            <h1> {this.props.jobseeker_name}</h1>
             <h2>{this.props.location}</h2>
             <h3>{this.props.general_profession}</h3>
             <h3>{this.props.linkedIn}</h3>
