@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import {connect} from 'react-redux';
+
 import Swipeable from "react-swipy";
 import {getSeekerJobs} from "../../utils/actions/seeker";
+import {matchApps} from "../../utils/actions/matchActions"
 import { Card, Button } from '@material-ui/core';
 import jobCard from "./SJobCard";
 
@@ -35,10 +37,13 @@ class cardStream extends Component {
             {cards: this.props.cards}
         )
     }
-    match =(direction)=>{
-        if (direction === "left")return;
-        else if (direction ==="right")
-    console.log(direction);
+    matchApps =(direction)=>{
+    //     if (direction === "left" )return;
+    //     else if (direction === "right"){ 
+    //       this.props.match(this.props.jobseeker_id)
+    //       this.props.jobs.selected === true
+    //       }
+    // console.log(direction);
 
     }
     remove = () =>
@@ -92,4 +97,4 @@ class cardStream extends Component {
       )
   }
 
-export default connect(mapStatetoProps,{getSeekerJobs})(cardStream)
+export default connect(mapStatetoProps,{getSeekerJobs, matchApps})(cardStream)

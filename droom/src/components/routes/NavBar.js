@@ -12,7 +12,7 @@ export default function NavBar() {
                 <Link to="/logout">Logout</Link>
                 <Link to='/company-landing'>Company With Job</Link>
                 <Link to="/jobs">Jobs</Link>
-               
+                
             </nav>
         </div>
     )

@@ -26,8 +26,9 @@ function App() {
         <Route exact path="/" component={SignupForm} />
         <Route path='/jobs' component={CJobs}/>
         <Route path='/SeekerProfileView' component={SeekerProfileView}/>
-       
+      
         <Switch>
+          <LoginPrivate path='/cardStream' component={cardStream}/>
           <LoginPrivate path='/profile' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>
           <LoginPrivate path='/jobs' component={CJobs}/>
