@@ -26,7 +26,6 @@ function App() {
           <Route exact path="/" component={LoginForm} />
           <Route exact path="/" component={SignupForm} />
         </div>
-        <Route path='/jobs' component={CJobs}/>
         <Route path='/SeekerProfile' component={SeekerProfile}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
