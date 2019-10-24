@@ -6,7 +6,7 @@ import Swipeable from "react-swipy";
 import {getSeekerJobs} from "../../utils/actions/seeker";
 import {matchApps} from "../../utils/actions/matchActions"
 import { Card, Button } from '@material-ui/core';
-import jobCard from "./SJobCard";
+
 
 const appStyles = {
     height: "100%",
@@ -70,12 +70,12 @@ class cardStream extends Component {
                   onAfterSwipe={this.remove}
                 >
                   <Card>
-                <jobCard>
+              
                    <h3>{cards[0].position}</h3>
                     <h4>{cards[0].location}</h4>
                     <h5>salary {cards[0].pay_range}</h5>
                     <p>{cards[0].description}</p>
-                </jobCard>
+               
                   </Card>
 
                 </Swipeable>
