@@ -34,20 +34,20 @@ getModalContent = props => {
         <form onSubmit={props.onSubmit}>
             <InputText
                 label={'Name'}
-                value={props.jobseekers.jobseeker_name}
+                value={this.props.jobseeker_name}
             />
             <InputText label={'Location'} value={props.jobseekers.location} />
             <InputText
                 label={'Profession'}
-                value={props.jobseekers.general_profession}
+                value={this.props.general_profession}
             />
             <InputText
                 label={'Interests'}
-                value={props.jobseekers.description}
+                value={this.props.description}
             />
             <InputText
                 label={'LinkedIn'}
-                value={props.jobseekers.linkedIn}
+                value={this.props.linkedIn}
             />
             <Button type={'submit'} text={'Submit'} />
         </form>
@@ -78,7 +78,7 @@ render() {
    console.log(this.props);
     return (
         <div className={classes.root}>
-            {/* <h1> {this.props.jobseeker_name}</h1>
+            <h1> {this.props.jobseeker_name}</h1>
             <h2>{this.props.location}</h2>
             <h3>{this.props.general_profession}</h3>
             <h3>{this.props.linkedIn}</h3>
@@ -96,7 +96,7 @@ render() {
                 title={'Account Information'}
                 subtitle={'Please fill out the form below.'}
                 profile={this.props.profile}
-            /> */}
+            />
         </div>
     );
 }
@@ -117,8 +117,7 @@ const mapStateToProps = (state) => {
     console.log(state)
 return ({
     classes:state.accountReducer.account
-}
-)
+})
 }
 const materialStyles = connect(mapStateToProps,{updateAccountInfo,getAccountInfo})(SeekerProfile);
 export default withStyles(styles)(materialStyles)
