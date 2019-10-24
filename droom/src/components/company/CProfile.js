@@ -7,10 +7,14 @@ const CProfile = (props) => {
     }, [])
 
     const redirect = (id) => {
-        props.getJobData(id)
         props.companyJobs(id)
+        .then(res => {
+            props.getJobData(id)
+        })
         props.history.push('/company-landing')
     }
+
+   
     return (
         <div>
             {props.company.map(company => ( <div className='c-i-i'key ={company.id} id={company.id}>

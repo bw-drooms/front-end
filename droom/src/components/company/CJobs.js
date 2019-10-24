@@ -41,9 +41,6 @@ const useStyles = makeStyles(theme => ({
 // END ---- Material UI - Card Styling
 
 const CJobs = (props) => {
-  console.log('single job props', props)
-  console.log('singlejobs', props.jobs)
-
   const classes = useStyles();// MUI Styling classes
 
   const [editing, setEditing] = useState(false)
@@ -61,21 +58,26 @@ const edit = e => {
 useEffect(() => {
   props.getJobData()
 }, [])
-//use effect conditional for job data
-useEffect(() => {
-  if(props.editJobData) {
-    setJobToEdit({
-      id: props.jobs.id,
-      location: props.jobs.location, 
-      position: props.jobs.position, 
-      pay_range: props.jobs.pay_range, 
-      description: props.jobs.description 
-    })
-  } else {
-    setEditing(false)
-  }
-}, [editing])
+
+const startEdit =(jobs) => {
+  setJobToEdit({
+    job_id:jobs.job_id,
+    location: jobs.location, 
+    position: jobs.position, 
+    pay_range: jobs.pay_range, 
+    description: jobs.description })
+    setEditing(true)
+}
+useEffect(()=> {
+  console.log('jobToEdit', jobToEdit)
+},[jobToEdit])
 //conditional render for is fetch data
+
+const deleteJob = (job) => {
+  props.deleteJobPost(job)
+  .then(res => props.getJobData())
+} 
+
 if (!props.jobs) {
   return <div>Jobs are loading...</div>
 }
@@ -108,8 +110,8 @@ return (
           </CardActionArea>
           <CardActions>
           <div className='button-row'>
-            <Button key={jobs.id} onClick={() => setJobToEdit(jobs.id)}>edit</Button>
-            <Button onCLick={props.deleteJob}>x</Button>
+            <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
+            <Button onClick={() => deleteJob(jobs)}>x</Button>
           </div>
           </CardActions>
         </Card>
@@ -123,7 +125,7 @@ return (
             Location: <input
               type='text'
               name='location'
-              value={props.jobs.location}
+              value={jobToEdit.location}
               onChange={handleChange}
             />
           </label>
@@ -131,7 +133,7 @@ return (
             Position: <input
               type='text'
               name='position'
-              value={props.jobs.position}
+              value={jobToEdit.position}
               onChange={handleChange}
             />
           </label>
@@ -139,7 +141,7 @@ return (
             Salary Offer: <input
               type='text'
               name='pay_range'
-              value={props.jobs.pay_range}
+              value={jobToEdit.pay_range}
               onChange={handleChange}
             />
           </label>
@@ -147,7 +149,7 @@ return (
             Description: <input
               type='text'
               name='description'
-              value={props.jobs.descrition}
+              value={jobToEdit.description}
               onChange={handleChange}
             />
           </label>
