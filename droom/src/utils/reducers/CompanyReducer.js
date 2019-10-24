@@ -51,12 +51,14 @@ const companyReducer = (state = initialState, action) => {
                 error: action.payload
             }
         case C_JOB_ADD:
+            let newState = {...state}
+            let jobs = newState.jobs
+
             return {
-                ...state,
+                ...newstate,
                 isFetching: true,
                 isUpdating: true,
-                error: '',
-                job: action.payload
+                jobs
             }
         case C_JOB_ADD_SUCCESS:
             return {
