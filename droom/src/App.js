@@ -22,8 +22,10 @@ function App() {
       <NavBar />
       <div className="App">
         <h1>Droom</h1>
-        <Route exact path="/" component={LoginForm} />
-        <Route exact path="/" component={SignupForm} />
+        <div className="registration-page">
+          <Route exact path="/" component={LoginForm} />
+          <Route exact path="/" component={SignupForm} />
+        </div>
         <Route path='/jobs' component={CJobs}/>
         <Route path='/SeekerProfile' component={SeekerProfile}/>
         <Switch>

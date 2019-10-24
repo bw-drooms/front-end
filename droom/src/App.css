@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+
+}
+
+body {
+  background-color: #0bcbc3;
 }
 
 .App-logo {
@@ -19,4 +24,14 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.registration-page {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 5%;
+  margin-right: 2%;
 }
