@@ -37,7 +37,14 @@ const useStyles = makeStyles(theme => ({
     height: 40,
     backgroundColor: '#233536',
     color: '#fbffd8',
-  }
+    width: 325,
+  },
+  font: {
+    color: '#0bcbc3',
+    fontFamily: 'Liu Jian Mao Cao, cursive',
+    fontSize: 65,
+    paddingBottom: 20,
+  },
 }));
 
 
@@ -69,6 +76,9 @@ const LoginForm =(props) => {
     return (
         <Paper className={classes.root}>
             <form className={classes.container} autoComplete="off" onSubmit={login}>
+              <Typography className={classes.font} variant="h4">
+                Login
+              </Typography>
                 <TextField
                     id="outlined-username-input"
                     label="username"

@@ -1,10 +1,10 @@
 .App {
   text-align: center;
-
 }
 
 body {
   background-color: #0bcbc3;
+  height: 100vh;
 }
 
 .App-logo {
@@ -43,4 +43,8 @@ body {
 h1 {
   color: #fbffd8;
   font-size: 4rem;
+}
+
+.spacer {
+  padding-top: 100px;
 }

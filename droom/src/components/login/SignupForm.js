@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
+        
     },
     textField: {
         marginLeft: theme.spacing(3),
@@ -47,8 +48,16 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
         height: 40,
         backgroundColor: '#233536',
-        color: 'white',
-    }
+        color: '#fbffd8',
+        width: 325,
+    },
+
+    font: {
+        color: '#0bcbc3',
+        fontFamily: 'Liu Jian Mao Cao, cursive',
+        fontSize: 65,
+        paddingBottom: 20,
+      },
 }));
 
 export default function SignupForm(props) {
@@ -89,7 +98,9 @@ export default function SignupForm(props) {
     return (
         <Paper className={classes.root}>
             <form className={classes.container} autoComplete="off" onSubmit={signup}>
-                
+            <Typography className={classes.font} variant="h4">
+                Sign Up!
+              </Typography>
                 <TextField
                     id="outlined-name"
                     label="username"
@@ -138,7 +149,7 @@ export default function SignupForm(props) {
                             className: classes.menu,
                         },
                     }}
-                    helperText="Please select your user type"
+                    helperText="Please select user type"
                     margin="normal"
                     variant="outlined"
                     required
