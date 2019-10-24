@@ -7,7 +7,7 @@ import LoginForm from './components/login/LoginForm';
 import SignupForm from './components//login/SignupForm';
 import CApplicantList from './components/company/CApplicantList';
 
-import SeekerProfile from './components/seeker/SProfile'
+import SeekerProfileView from './components/seeker/SProfile'
 
 import cardStream from './components/seeker/SCardStream'
 
@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/" component={SignupForm} />
         <Route path='/jobs' component={CJobs}/>
-        <Route path='/SeekerProfile' component={SeekerProfile}/>
+        <Route path='/SeekerProfileView' component={SeekerProfileView}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>

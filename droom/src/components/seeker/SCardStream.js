@@ -37,6 +37,7 @@ class cardStream extends Component {
     }
     match =(direction)=>{
         if (direction === "left")return;
+        else if (direction ==="right")
     console.log(direction);
 
     }

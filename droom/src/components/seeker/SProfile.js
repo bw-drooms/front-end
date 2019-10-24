@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Button } from '@material-ui/core';
+import { withStyles, Button, Card } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import Fab from '@material-ui/core/Fab';
 import SimpleModal from './SimpleModal';
 import InputText from './InputText';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
@@ -50,6 +52,7 @@ getModalContent = props => {
                 value={this.props.linkedIn}
             />
             <Button type={'submit'} text={'Submit'} />
+            
         </form>
     );
 };
@@ -77,16 +80,21 @@ render() {
     const { classes } = this.props;
    console.log(this.props);
     return (
-        <div className={classes.root}>
+        <div className="user" key={this.props.id}>
+            <Card>
             <h1> {`${this.props.jobseeker_name}`}</h1>
             <h2>{`Location:${this.props.location}`}</h2>
             <h3>{`General Occupation:${this.props.general_profession}`}</h3>
             <h3>{`Linkedin:${this.props.linkedIn}`}</h3>
             <h4>{`About Me: ${this.props.description}`}</h4>
-            {this.props.myProfile ? (
-                <Button
+            </Card>
+            {/* {this.props.myProfile ? (
+                  <Fab color="secondary" aria-label="edit" className={classes.fab} onClick={this.handleEditClick}>
+                  <EditIcon />
+                </Fab> ) : ('')}
+                {/* <Button
                     onClick={this.handleEditClick}
-                    text={'Edit Profile'}/>) : ('')}
+                    text={'Edit Profile'}/> */} */}
 
             <SimpleModal
                 open={this.state.modal}

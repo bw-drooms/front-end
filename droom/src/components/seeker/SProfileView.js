@@ -2,14 +2,13 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 import InputText from './InputText';
 import SimpleModal from './SimpleModal';
-import SeekerProfile from './SProfile';
+import {SeekerProfile} from './SProfile';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
 import { connect } from 'react-redux';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-
-class SeekerProfile extends Component {
+import cardStream from './SCardStream'
+class SeekerProfileView extends Component {
+  
     state = {
         SeekerProfile: false,
         profile: {},
@@ -19,7 +18,7 @@ class SeekerProfile extends Component {
 
 
 componentDidMount() {
-    
+    console.log(SeekerProfile);
 let profileType = this.props.match.params.accountType;
     let profileOwner = false;
     let accountType = '';
@@ -75,8 +74,9 @@ render() {
                 profile={this.state.profile}
                 myProfile={this.state.myProfile}
             />) : ('')}
-    
+            
         </div>
+        
         );
     }}
     SeekerProfile.propTypes = {};
@@ -88,4 +88,4 @@ render() {
         };
     }
     
-    export default connect(mapStateToProps,{})(withStyles(styles)(SeekerProfile));
+    export default connect(mapStateToProps,{})(withStyles(styles)(SeekerProfileView));
