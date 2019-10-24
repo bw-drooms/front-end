@@ -27,7 +27,6 @@ const CProfile = (props) => {
     )
 }
 const mapStateToProps = state => {
-    console.log('Company Profile In', state)
     return {
         company: state.companyReducer.company,
         isFetching: state.companyReducer.isFetching,

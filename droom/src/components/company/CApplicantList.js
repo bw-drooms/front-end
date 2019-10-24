@@ -16,7 +16,7 @@ export default function CApplicantList(props) {
         .get(`https://droom6.herokuapp.com/api/companies/${companyId}/jobs/${jobId}`) 
         // ^^ gets applicants that have applied to a specific job posting
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             setApplicants(response.data);
         })
         .catch(error => {

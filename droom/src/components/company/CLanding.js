@@ -4,7 +4,6 @@ import CJobs from './CJobs'
 
 
 const CLanding = (props) => {
-    console.log('LANDING PROPS', props)
     return (
         <div className='landing-container'>
             <div className='company-display'>
@@ -22,7 +21,6 @@ const CLanding = (props) => {
     )
 }
 const mapStateToProps = state => {
-    console.log('LANDING', state)
     return {
         jobs: state.companyReducer.jobs,
         company: state.companyReducer.company,

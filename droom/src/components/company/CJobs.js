@@ -174,7 +174,6 @@ return (
 }
 
 const mapStateToProps = state => {
-  console.log('C Jobs Post state', state)
   return {
     jobs: state.companyReducer.jobs || [],
     isFetching: state.companyReducer.isFetching,
