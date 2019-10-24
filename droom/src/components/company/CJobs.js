@@ -74,9 +74,10 @@ const deleteJob = (job) => {
   .then(res => props.getJobData())
 } 
 
-const appRedirect = () => {
-  getApplicants()
-  props.history.push('/applicants')
+const appRedirect = (jobId) => {
+  // getApplicants()
+  const companyId = props.company.length ? props.company[0].id : 1
+  props.history.push(`/applicants/${companyId}/${jobId}`)
 }
 
 if (!props.jobs) {
@@ -113,7 +114,7 @@ return (
           <div className='button-row'>
             <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
             <Button onClick={() => deleteJob(jobs)}>x</Button>
-            <Button onClick={()=> appRedirect()}>Applicants</Button>
+            <Button onClick={()=> appRedirect(jobs.job_id)}>Applicants</Button>
           </div>
           </CardActions>
         </Card>

@@ -4,28 +4,39 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from 'react-redux'
 import axiosWithAuth from '../../utils/axiosWithAuth'
+import {Paper, Typography} from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2),
+    width: '30%',
+    marginRight: '30px',
+    backgroundColor: '#fbffd8',
+  },
   container: {
     display: 'flex',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: '45%',
+    width: '80%',
   },
   dense: {
     marginTop: theme.spacing(2),
   },
   menu: {
-    width: 200,
+    width: 500,
   },
   button: {
     margin: theme.spacing(1),
     height: 40,
+    backgroundColor: '#233536',
+    color: 'white',
   }
 }));
 
@@ -56,7 +67,7 @@ const LoginForm =(props) => {
       };
 
     return (
-        <div className="login-form">
+        <Paper className={classes.root}>
             <form className={classes.container} autoComplete="off" onSubmit={login}>
                 <TextField
                     id="outlined-username-input"
@@ -84,7 +95,7 @@ const LoginForm =(props) => {
                 />
                 <Button className={classes.button} variant="contained" type="submit">Submit</Button>
             </form>
-        </div>
+        </Paper>
     )
 }
 const mapStateToProps = state => {
