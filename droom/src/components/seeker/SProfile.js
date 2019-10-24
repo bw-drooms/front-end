@@ -7,13 +7,7 @@ import { updateAccountInfo } from '../../utils/actions/accountActions';
 import { connect } from 'react-redux';
 import accountReducer from '../../utils/reducers/accountReducer'
 import {getAccountInfo} from '../../utils/actions/accountActions'
-//         \"jobseeker_name\": \"Batlyn Stewart\",
-//         \"location\": \"Austin, TX\",
-//         \"general_profession\": \"Full Stack Software Engineer\",
-//         \"description\": \"Black belt in Karate\",
-//         \"linkedIn\": \"\",
-//         \"selected\": 0
-//     }
+
 
 
 
@@ -60,31 +54,31 @@ getModalContent = props => {
     );
 };
 
-// onSubmit = e => {
-//     e.preventDefault();
-//     //debugger;
-//     let profile = {};
-//     let errors = [];
-//     for (let i = 0; i < e.target.length; i++) {
-//         if (!!e.target[i].name) {
-//             profile[e.target[i].name] = e.target[i].value;
+onSubmit = e => {
+    e.preventDefault();
+    //debugger;
+    let profile = {};
+    let errors = [];
+    for (let i = 0; i < e.target.length; i++) {
+        if (!!e.target[i].name) {
+            profile[e.target[i].name] = e.target[i].value;
 
-//             if (e.target[i].value === '') {
-//                 errors.push(e.target[i].name);
-//             }
-//         }
-//     }
+            if (e.target[i].value === '') {
+                errors.push(e.target[i].name);
+            }
+        }
+    }
 
-//     this.props.updateAccountInfo(profile,'user');
-//     this.setState({ modal: false });
-// };
+    this.props.updateAccountInfo(profile,'user');
+    this.setState({ modal: false });
+};
 
 render() {
     const { classes } = this.props;
    console.log(classes);
     return (
         <div>
-            {/* <h1>"Hello"{this.props.jobseeker_name}</h1>
+            <h1>{this.props.jobseeker_name}</h1>
             <h2>{this.props.location}</h2>
             <h3>{this.props.general_profession}</h3>
             <h3>{this.props.linkedIn}</h3>
@@ -102,7 +96,7 @@ render() {
                 title={'Account Information'}
                 subtitle={'Please fill out the form below.'}
                 profile={this.props.profile}
-            /> */}
+            />
         </div>
     );
 }
