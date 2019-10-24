@@ -24,7 +24,6 @@ function App() {
         <h1>Droom</h1>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/" component={SignupForm} />
-        <Route path='/jobs' component={CJobs}/>
         <Route path='/SeekerProfile' component={SeekerProfile}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
