@@ -13,7 +13,7 @@ const CProfile = (props) => {
     }
     return (
         <div>
-            {props.company.map(company => ( <div className='c-i-i'id={company.id}>
+            {props.company.map(company => ( <div className='c-i-i'key ={company.id} id={company.id}>
                 <h4>{company.company_name}</h4>
                 <p className='c-industry'>{company.company_industry}</p>
                 <button onClick={() => redirect(company.id)}>Jobs at this company</button>

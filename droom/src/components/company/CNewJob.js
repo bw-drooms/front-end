@@ -1,17 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addCJobPost } from '../../utils/actions'
+import { addCJobPost, getJobData } from '../../utils/actions'
 
 const CNewJob = (props) => {
-const [newJob, setNewJob] = React.useState({company_id: props.company_id, location: '', position: '', pay_range: '', description: '', selected: 0})
+const [newJob, setNewJob] = React.useState({company_id: props.company[0].id, location: '', position: '', pay_range: '', description: '', selected: false})
 
 const handleChange = e => {
 setNewJob({...newJob, [e.target.name]: e.target.value})
 }
 
+React.useEffect(() => {
+setNewJob({...newJob, company_id: props.company[0].id, })
+}, [props.company])
+
 const submit = e => {
   e.preventDefault()
+  console.log('newJob', newJob)
   props.addCJobPost(newJob)
+  .then(res => {
+    props.getJobData(newJob.company_id)
+  })
 }
   //needs post for endpoint action
     return (
@@ -60,11 +68,12 @@ const submit = e => {
     )
 }
 const mapStateToProps = state => {
-  console.log('New Object post Request', state)
+const company = state.companyReducer.company
   return {
+    company: company.length ? company : [{}],
     jobs: state.companyReducer.jobs || [],
     isUpdating: state.companyReducer.isUpdating,
     error: state.companyReducer.error
   }
 }
-export default connect(mapStateToProps, {addCJobPost})(CNewJob)
+export default connect(mapStateToProps, {addCJobPost, getJobData})(CNewJob)

@@ -51,23 +51,18 @@ const companyReducer = (state = initialState, action) => {
                 error: action.payload
             }
         case C_JOB_ADD:
-            let newState = {...state}
-            let jobs = newState.jobs
-
-            return {
-                ...newstate,
-                isFetching: true,
-                isUpdating: true,
-                jobs
-            }
-        case C_JOB_ADD_SUCCESS:
             return {
                 ...state,
-                isFetching: false,
-                isUpdating: false,
+                isFetching: true,
+                isUpdating: true,
                 error: '',
-                jobs: action.payload
             }
+        case C_JOB_ADD_SUCCESS:
+                return {
+                    ...state,
+                    isFetching: false,
+                    isUpdating: false,
+                }
         case C_JOB_ADD_FAILED:
             return {
                 ...state,
@@ -90,10 +85,7 @@ const companyReducer = (state = initialState, action) => {
                 error: action.payload,
             }
         case DELETE_C_JOB:
-            return {
-                ...state,
-                jobs: action.payload
-            }
+            
         case DELETE_C_JOB_FAILED:
             return {
                 isUpdating: false,

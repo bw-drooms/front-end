@@ -86,7 +86,7 @@ return (
     <div className={classes.root}>
       <Grid container spacing={3}>
       {props.jobs.map(jobs => (
-        <Grid item xs={3}>
+        <Grid item xs={3} key={jobs.id}>
         <Card className={classes.card} id={jobs.id}>
           <CardActionArea>
           <CardMedia
@@ -96,7 +96,7 @@ return (
           />
           <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          {jobs.position} @ <t /> {jobs.company_name}
+          {jobs.position} @  {jobs.company_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <p>Location: {jobs.location}</p>

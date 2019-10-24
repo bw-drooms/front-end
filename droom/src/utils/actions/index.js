@@ -1,6 +1,3 @@
-// import {COMPANY_FETCH, COMPANY_FETCH_SUCCESS, COMPANY_FETCH_FAILED, COMPANY_FETCH_JOB, companyJobs, getCompany, C_JOB_DATA, C_JOB_FETCH_SUCCESS, C_JOB_FETCH_FAILED, getJobData, EDIT_C_JOB_DATA, EDIT_C_JOB_DATA_SUCCESS, editJobData, DELETE_C_JOB, DELETE_C_JOB_FAILED, deleteJobPost, C_JOB_ADD, C_JOB_ADD_SUCCESS, C_JOB_ADD_FAILED, addCJobPost, } from './CompanyActions'
-
-
 import axios from 'axios'
 import axiosWithAuth from '../axiosWithAuth'
 /*<------------------SPECIFIC COMPANY  FETCH ---------->*/
@@ -53,7 +50,7 @@ export const C_JOB_ADD_FAILED = 'C_JOB_ADD_FAILED '
 
 export const addCJobPost = (job) => dispatch => {
     dispatch({ type: C_JOB_ADD });
-    axiosWithAuth()
+    return axiosWithAuth()
         .post('https://droom6.herokuapp.com/api/jobs', job)
         .then(res => {
             console.log('New job adding', res.data)
