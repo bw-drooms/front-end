@@ -78,11 +78,11 @@ render() {
    console.log(this.props);
     return (
         <div className={classes.root}>
-            <h1> {this.props.jobseeker_name}</h1>
-            <h2>{this.props.location}</h2>
-            <h3>{this.props.general_profession}</h3>
-            <h3>{this.props.linkedIn}</h3>
-            <h4>{this.props.description}</h4>
+            <h1> {`${this.props.jobseeker_name}`}</h1>
+            <h2>{`Location:${this.props.location}`}</h2>
+            <h3>{`General Occupation:${this.props.general_profession}`}</h3>
+            <h3>{`Linkedin:${this.props.linkedIn}`}</h3>
+            <h4>{`About Me: ${this.props.description}`}</h4>
             {this.props.myProfile ? (
                 <Button
                     onClick={this.handleEditClick}
