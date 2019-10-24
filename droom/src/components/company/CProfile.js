@@ -4,7 +4,7 @@ import { getCompany, companyJobs, getJobData } from '../../utils/actions/index'
 const CProfile = (props) => {
     useEffect(() => {
         props.getCompany()
-    }, [])
+    }, [props])
 
     const redirect = (id) => {
         props.companyJobs(id)

@@ -45,20 +45,12 @@ const CJobs = (props) => {
 
   const [editing, setEditing] = useState(false)
   const [jobToEdit, setJobToEdit] = useState({ location: props.jobs.location, position: props.jobs.position, pay_range: props.jobs.pay_range, description: props.jobs.description });
-//writes editing modal and form data to edit
-const handleChange = e => {
-  setJobToEdit({ ...jobToEdit, [e.target.name]: e.target.value })
-}
-//handles input change for job data edit
-const edit = e => {
-  e.preventDefault()
-  props.editJobData(jobToEdit)
-}
-//handles refresh for jobs on NewJobPost
+
+//DATA & REFRESH
 useEffect(() => {
   props.getJobData()
-}, [])
-
+}, [props])
+//EDITS
 const startEdit =(jobs) => {
   setJobToEdit({
     job_id:jobs.job_id,
@@ -68,12 +60,20 @@ const startEdit =(jobs) => {
     description: jobs.description })
     setEditing(true)
 }
-
+//writes editing modal and form data to edit
+const handleChange = e => {
+  setJobToEdit({ ...jobToEdit, [e.target.name]: e.target.value })
+}
+//handles input change for job data edit
+const edit = e => {
+  e.preventDefault()
+  props.editJobData(jobToEdit)
+}
 const deleteJob = (job) => {
   props.deleteJobPost(job)
   .then(res => props.getJobData())
 } 
-
+//PUSH TO JOB APPLICANTS
 const appRedirect = (jobId) => {
   // getApplicants()
   const companyId = props.company.length ? props.company[0].id : 1
@@ -103,9 +103,9 @@ return (
           {jobs.position} @  {jobs.company_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <p>Location: {jobs.location}</p>
-           <p> Pay: ${jobs.pay_range}</p>
-          <p>Description  :  <br />{jobs.description}</p>
+          <p>@: {jobs.location}</p>
+          <p>$:{jobs.pay_range}</p>
+          <p>"":  <br />{jobs.description}</p>
 
           </Typography>
           </CardContent>
@@ -113,8 +113,8 @@ return (
           <CardActions>
           <div className='button-row'>
             <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
-            <Button onClick={() => deleteJob(jobs)}>x</Button>
-            <Button onClick={()=> appRedirect(jobs.job_id)}>Applicants</Button>
+            <Button onClick={() => deleteJob(jobs)}>delete</Button>
+            <Button onClick={()=> appRedirect(jobs.job_id)}>applicants</Button>
           </div>
           </CardActions>
         </Card>
@@ -123,7 +123,7 @@ return (
       <div className='form-on-edit'>
         {editing && (
         <form onSubmit={edit}>
-          <legend>Change Job Details</legend>
+          <legend>Edit Job Offer</legend>
           <label>
             Location: <input
               type='text'
@@ -166,7 +166,6 @@ return (
       </Grid>
   </div >
     </div>
-      
       <Paper className={classes.paper}>
       <CNewJob /></Paper>
 </>

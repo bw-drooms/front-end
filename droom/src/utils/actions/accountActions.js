@@ -9,7 +9,7 @@ export const REGISTERED = 'REGISTERED';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGGED_OUT = 'LOGGED_OUT';
 export const GETTING_ACCOUNT_INFO = 'GETTING_ACCOUNT_INFO';
-let registered = [];
+// let registered = [];
 
 export const updateAccountInfo = (
     account,

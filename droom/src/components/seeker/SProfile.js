@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Button } from '@material-ui/core';
+import { withStyles, Button, Card } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import Fab from '@material-ui/core/Fab';
 import SimpleModal from './SimpleModal';
 import InputText from './InputText';
 import { updateAccountInfo } from '../../utils/actions/accountActions';
 import { connect } from 'react-redux';
 import accountReducer from '../../utils/reducers/accountReducer'
 import {getAccountInfo} from '../../utils/actions/accountActions'
-//         \"jobseeker_name\": \"Batlyn Stewart\",
-//         \"location\": \"Austin, TX\",
-//         \"general_profession\": \"Full Stack Software Engineer\",
-//         \"description\": \"Black belt in Karate\",
-//         \"linkedIn\": \"\",
-//         \"selected\": 0
-//     }
+
 
 
 
@@ -40,59 +36,65 @@ getModalContent = props => {
         <form onSubmit={props.onSubmit}>
             <InputText
                 label={'Name'}
-                value={props.jobseekers.jobseeker_name}
+                value={this.props.jobseeker_name}
             />
             <InputText label={'Location'} value={props.jobseekers.location} />
             <InputText
                 label={'Profession'}
-                value={props.jobseekers.general_profession}
+                value={this.props.general_profession}
             />
             <InputText
                 label={'Interests'}
-                value={props.jobseekers.description}
+                value={this.props.description}
             />
             <InputText
                 label={'LinkedIn'}
-                value={props.jobseekers.linkedIn}
+                value={this.props.linkedIn}
             />
             <Button type={'submit'} text={'Submit'} />
+            
         </form>
     );
 };
 
-// onSubmit = e => {
-//     e.preventDefault();
-//     //debugger;
-//     let profile = {};
-//     let errors = [];
-//     for (let i = 0; i < e.target.length; i++) {
-//         if (!!e.target[i].name) {
-//             profile[e.target[i].name] = e.target[i].value;
+onSubmit = e => {
+    e.preventDefault();
+    //debugger;
+    let profile = {};
+    let errors = [];
+    for (let i = 0; i < e.target.length; i++) {
+        if (!!e.target[i].name) {
+            profile[e.target[i].name] = e.target[i].value;
 
-//             if (e.target[i].value === '') {
-//                 errors.push(e.target[i].name);
-//             }
-//         }
-//     }
+            if (e.target[i].value === '') {
+                errors.push(e.target[i].name);
+            }
+        }
+    }
 
-//     this.props.updateAccountInfo(profile,'user');
-//     this.setState({ modal: false });
-// };
+    this.props.updateAccountInfo(profile,'user');
+    this.setState({ modal: false });
+};
 
 render() {
     const { classes } = this.props;
-   console.log(classes);
+   console.log(this.props);
     return (
-        <div>
-            {/* <h1>"Hello"{this.props.jobseeker_name}</h1>
-            <h2>{this.props.location}</h2>
-            <h3>{this.props.general_profession}</h3>
-            <h3>{this.props.linkedIn}</h3>
-            <h4>{this.props.description}</h4>
-            {this.props.myProfile ? (
-                <Button
+        <div className="user" key={this.props.id}>
+            <Card>
+            <h1> {`${this.props.jobseeker_name}`}</h1>
+            <h2>{`Location:${this.props.location}`}</h2>
+            <h3>{`General Occupation:${this.props.general_profession}`}</h3>
+            <h3>{`Linkedin:${this.props.linkedIn}`}</h3>
+            <h4>{`About Me: ${this.props.description}`}</h4>
+            </Card>
+            {/* {this.props.myProfile ? (
+                  <Fab color="secondary" aria-label="edit" className={classes.fab} onClick={this.handleEditClick}>
+                  <EditIcon />
+                </Fab> ) : ('')}
+                {/* <Button
                     onClick={this.handleEditClick}
-                    text={'Edit Profile'}/>) : ('')}
+                    text={'Edit Profile'}/> */} */}
 
             <SimpleModal
                 open={this.state.modal}
@@ -102,7 +104,7 @@ render() {
                 title={'Account Information'}
                 subtitle={'Please fill out the form below.'}
                 profile={this.props.profile}
-            /> */}
+            />
         </div>
     );
 }
@@ -123,8 +125,7 @@ const mapStateToProps = (state) => {
     console.log(state)
 return ({
     classes:state.accountReducer.account
-}
-)
+})
 }
 const materialStyles = connect(mapStateToProps,{updateAccountInfo,getAccountInfo})(SeekerProfile);
 export default withStyles(styles)(materialStyles)
