@@ -5,6 +5,7 @@ import Swipeable from "react-swipy";
 import {getSeekerJobs} from "../../utils/actions/seeker";
 import { Card, Button } from '@material-ui/core';
 import jobCard from "./SJobCard";
+
 const appStyles = {
     height: "100%",
     display: "flex",
@@ -12,7 +13,6 @@ const appStyles = {
     alignItems: "center",
     width: "100%",
     minHeight: "100vh",
-    fontFamily: "sans-serif",
     overflow: "hidden"
   };
   
