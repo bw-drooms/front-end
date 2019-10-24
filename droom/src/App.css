@@ -26,6 +26,17 @@ body {
   color: #09d3ac;
 }
 
+.applicant-list {
+  font-family: 'Liu Jian Mao Cao', cursive;
+  margin: 0 auto;
+  background-color: #233536;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
 .registration-page {
   display: flex;
   justify-content: center;

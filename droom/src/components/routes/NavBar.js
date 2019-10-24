@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import Image from "../../images/DroomThumbnail.png";
 
 ////////////// Material UI imports //////////////////
-import PropTypes from 'prop-types';
-import { makeStyles, AppBar, Tabs, Tab, Typography, Box, createMuiTheme } from '@material-ui/core';
+import { makeStyles, AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core';
 
 
 
@@ -71,6 +71,7 @@ export default function NavBar() {
     setValue(newValue);
   };
 
+  ////creates logout function/////
   const logout = () => {
     localStorage.removeItem("token");
    }
@@ -83,10 +84,9 @@ export default function NavBar() {
           <img className="logo" src={Image} alt="Droom Thumbnail Logo"/>
             <Link className={classes.link} to="/"><Tab label="Login" {...a11yProps(0)} /></Link>
             <Link className={classes.link} to="/profile"><Tab label="My Profile" {...a11yProps(1)} /></Link> 
-            <Link className={classes.link} to="/jobs"><Tab label="Jobs" {...a11yProps(2)} /></Link>
-            <Link className={classes.link} to="/dashboard"><Tab label="Dashboard" {...a11yProps(3)} /></Link>
-            <Link className={classes.link} to='/company-landing'><Tab label="Companies" {...a11yProps(4)} /></Link>
-            <Link className={classes.link} to="/" onClick={logout}><Tab label="Logout" {...a11yProps(5)} /></Link>
+            <Link className={classes.link} to="/dashboard"><Tab label="Dashboard" {...a11yProps(2)} /></Link>
+            <Link className={classes.link} to='/company-landing'><Tab label="Companies" {...a11yProps(3)} /></Link>
+            <Link className={classes.link} to="/" onClick={logout}><Tab label="Logout" {...a11yProps(4)} /></Link>
           </Tabs>
         </AppBar>
       </div>

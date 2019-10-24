@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import React, { useState } from 'react';
 import axiosWithAuth from '../../utils/axiosWithAuth'
-import {Paper, Typography} from '@material-ui/core';
+
+///////////imports Material UI components////////////
+import { Paper, Typography, MenuItem, makeStyles, Button, TextField } from '@material-ui/core';
 
 const users = [
     {
