@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
+import { getJobData, editJobData, deleteJobPost, getApplicants } from '../../utils/actions'
 import CNewJob from './CNewJob'
 
 // START ---- Material UI - Card Styling
@@ -68,15 +68,16 @@ const startEdit =(jobs) => {
     description: jobs.description })
     setEditing(true)
 }
-useEffect(()=> {
-  console.log('jobToEdit', jobToEdit)
-},[jobToEdit])
-//conditional render for is fetch data
 
 const deleteJob = (job) => {
   props.deleteJobPost(job)
   .then(res => props.getJobData())
 } 
+
+const appRedirect = () => {
+  getApplicants()
+  props.history.push('/applicants')
+}
 
 if (!props.jobs) {
   return <div>Jobs are loading...</div>
@@ -112,6 +113,7 @@ return (
           <div className='button-row'>
             <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
             <Button onClick={() => deleteJob(jobs)}>x</Button>
+            <Button onClick={()=> appRedirect()}>Applicants</Button>
           </div>
           </CardActions>
         </Card>
@@ -165,7 +167,6 @@ return (
     </div>
       
       <Paper className={classes.paper}>
-      <button>Post a Position</button>
       <CNewJob /></Paper>
 </>
 )
@@ -180,5 +181,4 @@ const mapStateToProps = state => {
     error: state.companyReducer.error
   }
 }
-
-export default connect(mapStateToProps, { getJobData, editJobData, deleteJobPost })(CJobs)
+export default connect(mapStateToProps, { getJobData, editJobData, deleteJobPost, getApplicants })(CJobs)

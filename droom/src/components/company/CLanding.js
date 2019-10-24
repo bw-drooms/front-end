@@ -16,7 +16,7 @@ const CLanding = (props) => {
     ))}
             </div>
             <div className='jobs'>
-                <CJobs />
+                <CJobs history={props.history}/>
             </div>
         </div>
     )

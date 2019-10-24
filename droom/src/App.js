@@ -29,7 +29,6 @@ function App() {
           <LoginPrivate path='/company-landing' component={CLanding}/>
           <LoginPrivate path='/jobs' component={CJobs}/>
           <LoginPrivate path='/applicants' component={CApplicantList}/>
-          <LoginPrivate path='/jobs' component={CJobs}/>
         </Switch>
       </div>
     </Router>
