@@ -14,7 +14,7 @@ import cardStream from './components/seeker/SCardStream'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPrivate from './components/routes/LoginPrivate'
 import NavBar from './components/routes/NavBar';
-import SignUpPrivate from './components/routes/SignUpPrivate';
+
 
 function App() {
   return (

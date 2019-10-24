@@ -66,11 +66,18 @@ export default function SignupForm(props) {
         console.log('values', values)
         axiosWithAuth()
             .post('api/register', values)
-            .then(res => {
-                console.log('login', res.data)
-                localStorage.setItem('token', res.data.payload)
-                props.history.push('/profile')
-
+            .then(() => {
+                const loginObject = {
+                    username: values.username,
+                    password: values.password
+                }
+                axiosWithAuth()
+                    .post('api/login', loginObject)
+                    .then(res => {
+                        console.log('login', res.data.token)
+                        localStorage.setItem('token', res.data.token)
+                        props.history.push('/profile')
+                    })
             })
             .catch(err => console.log('Login Error', err))
     }
