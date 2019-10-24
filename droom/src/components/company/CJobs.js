@@ -61,6 +61,7 @@ useEffect(() => {
 
 const startEdit =(jobs) => {
   setJobToEdit({
+    
     job_id:jobs.job_id,
     location: jobs.location, 
     position: jobs.position, 

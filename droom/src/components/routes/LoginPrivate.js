@@ -12,7 +12,6 @@ const LoginPrivate = ({ component: Component, ...rest }) => {
                     return <Redirect to="/" />
                 }
             }}
-
         />
     )
 }

@@ -60,8 +60,7 @@ export default function SignupForm(props) {
             .then(res => {
                 console.log('login', res.data)
                 localStorage.setItem('token', res.data.payload)
-                props.history.push('/profile')
-
+                props.history.push('/')
             })
             .catch(err => console.log('Login Error', err))
     }
