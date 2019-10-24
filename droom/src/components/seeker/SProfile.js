@@ -78,7 +78,7 @@ render() {
    console.log(this.props);
     return (
         <div className={classes.root}>
-            <h1> {this.props.jobseeker_name}</h1>
+            {/* <h1> {this.props.jobseeker_name}</h1>
             <h2>{this.props.location}</h2>
             <h3>{this.props.general_profession}</h3>
             <h3>{this.props.linkedIn}</h3>
@@ -96,7 +96,7 @@ render() {
                 title={'Account Information'}
                 subtitle={'Please fill out the form below.'}
                 profile={this.props.profile}
-            />
+            /> */}
         </div>
     );
 }
