@@ -24,12 +24,12 @@ function App() {
         <h1>Droom</h1>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/" component={SignupForm} />
-        <Route path='/jobs' component={CJobs}/>
         <Switch>
           <LoginPrivate path='/profile' component={CProfile}/>
           <LoginPrivate path='/company-landing' component={CLanding}/>
           <LoginPrivate path='/jobs' component={CJobs}/>
           <LoginPrivate path='/applicants' component={CApplicantList}/>
+          <LoginPrivate path='/jobs' component={CJobs}/>
         </Switch>
       </div>
     </Router>

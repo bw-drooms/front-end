@@ -39,71 +39,66 @@ const companyReducer = (state = initialState, action) => {
                 jobs: action.payload
             }
         case COMPANY_FETCH_FAILED:
-                return {
-                    ...state,
-                    isFetching: false,
-                    error: action.payload
-                }
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
+            }
         case C_JOB_FETCH_FAILED:
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload
             }
-            case DELETE_C_JOB_FAILED:
-                return{
-                    isUpdating: false,
-                    error: action.payload
-                }
-            case DELETE_C_JOB:
-                let newState = {...state}
-                let jobs = newState.jobs.filter(
-                    jobs => jobs.id !== action.payload) 
-                    return {
-                        ...state,
-                        isUpdating: true,
-                        error: '',
-                        jobs
-            }
         case C_JOB_ADD:
-            let newJob = [{...state}]
-            newJob.push(jobs => jobs.id !== action.payload)
-            return{
-                ...newJob,
+            return {
+                ...state,
                 isFetching: true,
                 isUpdating: true,
                 error: '',
                 job: action.payload
             }
         case C_JOB_ADD_SUCCESS:
-            return{
-                    ...state,
-                    isFetching: false,
-                    isUpdating: false,
-                    error: '',
-                    jobs: action.payload
+            return {
+                ...state,
+                isFetching: false,
+                isUpdating: false,
+                error: '',
+                jobs: action.payload
             }
-            case C_JOB_ADD_FAILED:
-                    return {
-                        ...state,
-                        isFetching: false,
-                        isUpdating: false,
-                        error: '',
-                    }
-            case EDIT_C_JOB_DATA:
-                return {
-                    ...state,
-                    isFetching: true,
-                    isUpdating: true,
-                    error: '',
-                }
-            case EDIT_C_JOB_DATA_SUCCESS:
-                return {
-                    ...state,
-                    isFetching: false,
-                    isUpdating: false,
-                    error: action.payload,
-                }
+        case C_JOB_ADD_FAILED:
+            return {
+                ...state,
+                isFetching: false,
+                isUpdating: false,
+                error: '',
+            }
+        case EDIT_C_JOB_DATA:
+            return {
+                ...state,
+                isFetching: true,
+                isUpdating: true,
+                error: '',
+            }
+        case EDIT_C_JOB_DATA_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                isUpdating: false,
+                error: action.payload,
+            }
+        case DELETE_C_JOB:
+            return {
+                ...state,
+                jobs: action.payload
+            }
+        case DELETE_C_JOB_FAILED:
+            return {
+                isUpdating: false,
+                error: action.payload
+            }
+
+
         default:
             return state
     }

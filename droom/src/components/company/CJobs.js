@@ -57,8 +57,10 @@ const edit = e => {
   e.preventDefault()
   props.editJobData(jobToEdit)
 }
-
-
+//handles refresh for jobs on NewJobPost
+useEffect(() => {
+  props.getJobData()
+}, [])
 //use effect conditional for job data
 useEffect(() => {
   if(props.editJobData) {
@@ -77,7 +79,6 @@ useEffect(() => {
 if (!props.jobs) {
   return <div>Jobs are loading...</div>
 }
-//standard functional return 
 return (
   <>
   <div>
