@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getJobData, editJobData, deleteJobPost } from '../../utils/actions'
+import { getJobData, editJobData, deleteJobPost, getApplicants } from '../../utils/actions'
 import CNewJob from './CNewJob'
 
 // START ---- Material UI - Card Styling
@@ -41,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 // END ---- Material UI - Card Styling
 
 const CJobs = (props) => {
-
   const classes = useStyles();// MUI Styling classes
 
   const [editing, setEditing] = useState(false)
@@ -55,27 +54,34 @@ const edit = e => {
   e.preventDefault()
   props.editJobData(jobToEdit)
 }
-
-
-//use effect conditional for job data
+//handles refresh for jobs on NewJobPost
 useEffect(() => {
-  if(props.editJobData) {
-    setJobToEdit({
-      id: props.jobs.id,
-      location: props.jobs.location, 
-      position: props.jobs.position, 
-      pay_range: props.jobs.pay_range, 
-      description: props.jobs.description 
-    })
-  } else {
-    setEditing(false)
-  }
-}, [editing])
-//conditional render for is fetch data
-if (props.isFetching) {
+  props.getJobData()
+}, [])
+
+const startEdit =(jobs) => {
+  setJobToEdit({
+    job_id:jobs.job_id,
+    location: jobs.location, 
+    position: jobs.position, 
+    pay_range: jobs.pay_range, 
+    description: jobs.description })
+    setEditing(true)
+}
+
+const deleteJob = (job) => {
+  props.deleteJobPost(job)
+  .then(res => props.getJobData())
+} 
+
+const appRedirect = () => {
+  getApplicants()
+  props.history.push('/applicants')
+}
+
+if (!props.jobs) {
   return <div>Jobs are loading...</div>
 }
-//standard functional return 
 return (
   <>
   <div>
@@ -83,7 +89,7 @@ return (
     <div className={classes.root}>
       <Grid container spacing={3}>
       {props.jobs.map(jobs => (
-        <Grid item xs={3}>
+        <Grid item xs={3} key={jobs.id}>
         <Card className={classes.card} id={jobs.id}>
           <CardActionArea>
           <CardMedia
@@ -93,11 +99,11 @@ return (
           />
           <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          {jobs.position} @ <t /> {jobs.company_name}
+          {jobs.position} @  {jobs.company_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           <p>Location: {jobs.location}</p>
-          <p>{jobs.company_industry}</p> <p> Pay: ${jobs.pay_range}</p>
+           <p> Pay: ${jobs.pay_range}</p>
           <p>Description  :  <br />{jobs.description}</p>
 
           </Typography>
@@ -105,8 +111,9 @@ return (
           </CardActionArea>
           <CardActions>
           <div className='button-row'>
-            <Button key={jobs.id} onClick={() => setJobToEdit(jobs.id)}>edit</Button>
-            <Button onCLick={props.deleteJob}>x</Button>
+            <Button key={jobs.id} onClick={() => startEdit(jobs)}>edit</Button>
+            <Button onClick={() => deleteJob(jobs)}>x</Button>
+            <Button onClick={()=> appRedirect()}>Applicants</Button>
           </div>
           </CardActions>
         </Card>
@@ -120,7 +127,7 @@ return (
             Location: <input
               type='text'
               name='location'
-              value={props.jobs.location}
+              value={jobToEdit.location}
               onChange={handleChange}
             />
           </label>
@@ -128,7 +135,7 @@ return (
             Position: <input
               type='text'
               name='position'
-              value={props.jobs.position}
+              value={jobToEdit.position}
               onChange={handleChange}
             />
           </label>
@@ -136,7 +143,7 @@ return (
             Salary Offer: <input
               type='text'
               name='pay_range'
-              value={props.jobs.pay_range}
+              value={jobToEdit.pay_range}
               onChange={handleChange}
             />
           </label>
@@ -144,7 +151,7 @@ return (
             Description: <input
               type='text'
               name='description'
-              value={props.jobs.descrition}
+              value={jobToEdit.description}
               onChange={handleChange}
             />
           </label>
@@ -160,7 +167,6 @@ return (
     </div>
       
       <Paper className={classes.paper}>
-      <button>Post a Position</button>
       <CNewJob /></Paper>
 </>
 )
@@ -175,5 +181,4 @@ const mapStateToProps = state => {
     error: state.companyReducer.error
   }
 }
-
-export default connect(mapStateToProps, { getJobData, editJobData, deleteJobPost })(CJobs)
+export default connect(mapStateToProps, { getJobData, editJobData, deleteJobPost, getApplicants })(CJobs)

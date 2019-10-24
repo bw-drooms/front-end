@@ -7,13 +7,17 @@ const CProfile = (props) => {
     }, [])
 
     const redirect = (id) => {
-        props.getJobData(id)
         props.companyJobs(id)
+        .then(res => {
+            props.getJobData(id)
+        })
         props.history.push('/company-landing')
     }
+
+   
     return (
         <div>
-            {props.company.map(company => ( <div className='c-i-i'id={company.id}>
+            {props.company.map(company => ( <div className='c-i-i'key ={company.id} id={company.id}>
                 <h4>{company.company_name}</h4>
                 <p className='c-industry'>{company.company_industry}</p>
                 <button onClick={() => redirect(company.id)}>Jobs at this company</button>
