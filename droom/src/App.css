@@ -30,8 +30,17 @@ body {
   display: flex;
   justify-content: center;
 }
-
+.main-logo {
+  width: 25%;
+  padding-bottom: 70px;
+  padding-top: 50px;
+}
 .logo {
   width: 5%;
   margin-right: 2%;
+}
+
+h1 {
+  color: #fbffd8;
+  font-size: 4rem;
 }
