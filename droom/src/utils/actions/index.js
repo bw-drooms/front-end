@@ -11,7 +11,7 @@ export const companyJobs = id => dispatch => {
    return axiosWithAuth()
         .get(`https://droom6.herokuapp.com/api/companies/${id}`)
         .then(res => {
-            console.log('job specific company', res)
+            // console.log('job specific company', res)
             dispatch({ type: COMPANY_FETCH_SUCCESS, payload: [res.data] })
         })
         .catch(err => console.log('job fetch err', err))
@@ -22,7 +22,7 @@ export const getCompany = () => dispatch => {
     return axiosWithAuth()
         .get('https://droom6.herokuapp.com/api/companies')
         .then(res => {
-            console.log('Company Data', res.data)
+            // console.log('Company Data', res.data)
             dispatch({ type: COMPANY_FETCH_SUCCESS, payload: res.data })
         })
         .catch(err => console.log('company err', err))
@@ -37,7 +37,7 @@ export const getJobData = (id) => dispatch => {
     axiosWithAuth()
         .get(`https://droom6.herokuapp.com/api/jobs/`)
         .then(res => {
-            console.log('Initial Call for jobs', res.data)
+            // console.log('Initial Call for jobs', res.data)
             dispatch({ type: C_JOB_FETCH_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: C_JOB_FETCH_FAILED, payload: err.response }))
@@ -52,7 +52,7 @@ export const addCJobPost = (job) => dispatch => {
     return axiosWithAuth()
         .post('https://droom6.herokuapp.com/api/jobs', job)
         .then(res => {
-            console.log('New job adding', res.data)
+            // console.log('New job adding', res.data)
             dispatch({ type: C_JOB_ADD_SUCCESS, payload: res.data.job })
         })
         .catch(err => dispatch({ type: C_JOB_ADD_FAILED, payload: err.response }))
@@ -67,7 +67,7 @@ export const editJobData = (update) => dispatch => {
    return axiosWithAuth()
         .put(`https://droom6.herokuapp.com/api/jobs/${update.job_id}`, update)
         .then(res => {
-            console.log('Edited data on job', update)
+            // console.log('Edited data on job', update)
             dispatch({ type: EDIT_C_JOB_DATA_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: EDIT_C_JOB_DATA_FAIL, payload: err.response }))
@@ -82,7 +82,7 @@ export const deleteJobPost = (update) => dispatch => {
     return axiosWithAuth()
         .delete(`https://droom6.herokuapp.com/api/jobs/${update.job_id}`)
         .then(res => {
-            console.log('removing filled position', res.data)
+            // console.log('removing filled position', res.data)
             dispatch({ type: DELETE_C_JOB_SUCCESS, payload: res.data.id })
         })
         .catch(err => dispatch({ type: DELETE_C_JOB_FAILED, payload: err.response }))
@@ -98,7 +98,7 @@ export const getApplicants = (applicants) => dispatch => {
     return axiosWithAuth()
     .get(`https://droom6.herokuapp.com/api/companies/:company_id/jobs/:job_id`)
     .then(res => {
-        console.log('applicants', applicants)
+        // console.log('applicants', applicants)
         dispatch({ type: GET_APPLICANTS_SUCCESS, payload: res.data})
     })
     .catch(err => dispatch({ type: GET_APPLICANTS_FAILED, payload: err.responser}))
