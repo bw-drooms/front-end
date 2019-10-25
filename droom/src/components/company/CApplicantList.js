@@ -37,21 +37,22 @@ export default function CApplicantList(props) {
     }, []);
 
     return (
-        <div className="applicant-list">
+        <div className="applicant-page">
             <h1>Applicants</h1>
-            {applicants.map(applicant => {
-                return (
-                    <CApplicantCard 
-                        // applicant info to be displayed 
-                        key={applicant.id}
-                        name={applicant.jobseeker_name}
-                        profession={applicant.general_profession}
-                        skills={applicant.description}
-                        social={applicant.linkedIn}
-                    />
-                );
-            })}
-            
+            <div className="applicant-list">
+                {applicants.map(applicant => {
+                    return (
+                        <CApplicantCard 
+                            // applicant info to be displayed 
+                            key={applicant.id}
+                            name={applicant.jobseeker_name}
+                            profession={applicant.general_profession}
+                            skills={applicant.description}
+                            social={applicant.linkedIn}
+                        />
+                    );
+                })}
+            </div>
         </div>  
     );
 }
