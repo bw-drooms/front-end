@@ -11,7 +11,7 @@ setNewJob({...newJob, [e.target.name]: e.target.value})
 
 React.useEffect(() => {
 setNewJob({...newJob, company_id: props.company[0].id, })
-}, [props.company])
+}, [props.company, newJob])
 
 const submit = e => {
   e.preventDefault()

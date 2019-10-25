@@ -1,4 +1,3 @@
-import axios from 'axios'
 import axiosWithAuth from '../axiosWithAuth'
 /*<------------------SPECIFIC COMPANY  FETCH ---------->*/
 export const COMPANY_FETCH = 'COMPANY_FETCH'

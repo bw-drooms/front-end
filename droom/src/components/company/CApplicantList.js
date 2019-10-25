@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CApplicantCard from './CApplicantCard';
-import axios from 'axios';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export default function CApplicantList(props) {
