@@ -17,7 +17,7 @@ const dummyData = [
 
 export default function CApplicantList(props) {
     // ^^ creates list of job applicants
-    const [applicants, setApplicants] = useState(dummyData);
+    const [applicants, setApplicants] = useState([]);
     console.log(props.match.params.company);
     console.log(props.match.params.job);
     console.log("hello world");

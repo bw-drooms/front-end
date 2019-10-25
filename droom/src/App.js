@@ -10,14 +10,15 @@ import cardStream from './components/seeker/SCardStream'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPrivate from './components/routes/LoginPrivate'
 import NavBar from './components/routes/NavBar';
-import Logo from './images/Droom-logo-dark.png';
+import LogoSpacer from './components/routes/LogoSpacer';
+
 
 function App() {
   return (
     <Router >
       <NavBar />
       <div className="App">
-        <img className="main-logo" src={Logo} alt="Droom Logo Dark"/>
+        <Route path="/" component={LogoSpacer}/>
         <div className="registration-page">
           <Route exact path="/" component={LoginForm} />
           <Route exact path="/" component={SignupForm} />
@@ -30,8 +31,7 @@ function App() {
           <LoginPrivate path='/applicants/:company/:job' component={CApplicantList}/>
         </Switch>
       </div>
-      <div className="spacer">
-        </div>
+      <div className="spacer"/>
     </Router>
   );
 }
