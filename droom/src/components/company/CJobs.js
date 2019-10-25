@@ -75,7 +75,6 @@ const deleteJob = (job) => {
 } 
 
 const appRedirect = (jobId) => {
-  // getApplicants()
   const companyId = props.company.length ? props.company[0].id : 1
   props.history.push(`/applicants/${companyId}/${jobId}`)
 }
