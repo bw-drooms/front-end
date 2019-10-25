@@ -18,11 +18,14 @@ const appStyles = {
     overflow: "hidden"
   };
   
-  const wrapperStyles = { position: "relative", width: "50%", height: "60%" };
+  const wrapperStyles = { width: "90%", height: "100%" };
   const actionsStyles = {
     display: "flex",
-    justifyContent: "space-between",
-    marginTop: 12
+    flexDirextion:"column",
+    alignItems:"center",
+    justifyContent: "center",
+    marginTop: 2,
+    paddingLeft: 20,
   };
 
 class cardStream extends Component {
