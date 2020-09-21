@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import axiosWithAuth from '../../utils/axiosWithAuth'
-import {Paper, Typography} from '@material-ui/core';
+
+///////////imports Material UI components////////////
+import { Paper, Typography, Button, TextField, makeStyles } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,8 +35,15 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     height: 40,
     backgroundColor: '#233536',
-    color: 'white',
-  }
+    color: '#fbffd8',
+    width: 325,
+  },
+  font: {
+    color: '#0bcbc3',
+    fontFamily: 'Liu Jian Mao Cao, cursive',
+    fontSize: 65,
+    paddingBottom: 20,
+  },
 }));
 
 
@@ -69,6 +75,9 @@ const LoginForm =(props) => {
     return (
         <Paper className={classes.root}>
             <form className={classes.container} autoComplete="off" onSubmit={login}>
+              <Typography className={classes.font} variant="h4">
+                Login
+              </Typography>
                 <TextField
                     id="outlined-username-input"
                     label="username"

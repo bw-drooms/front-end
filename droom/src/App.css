@@ -1,10 +1,10 @@
 .App {
   text-align: center;
-
 }
 
 body {
   background-color: #0bcbc3;
+  height: 100vh;
 }
 
 .App-logo {
@@ -26,12 +26,43 @@ body {
   color: #09d3ac;
 }
 
+.applicant-page {
+  font-family: 'Liu Jian Mao Cao', cursive;
+  margin: 0 auto;
+  background-color: #233536;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding-bottom: 50px;
+}
+
+.applicant-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .registration-page {
   display: flex;
   justify-content: center;
 }
-
+.main-logo {
+  width: 25%;
+  padding-bottom: 70px;
+  padding-top: 50px;
+}
 .logo {
   width: 5%;
   margin-right: 2%;
+}
+
+h1 {
+  color: #fbffd8;
+  font-size: 4rem;
+}
+
+.spacer {
+  padding-top: 100px;
 }
