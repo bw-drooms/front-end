@@ -102,10 +102,11 @@ return (
           {jobs.position} @  {jobs.company_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <p>Location: {jobs.location}</p>
-           <p> Pay: ${jobs.pay_range}</p>
-          <p>Description  :  <br />{jobs.description}</p>
-
+          <div>
+          <p>@: {jobs.location}</p>
+          <p>$: {jobs.pay_range}</p>
+          <p>"": <br />{jobs.description}</p>
+          </div>
           </Typography>
           </CardContent>
           </CardActionArea>

@@ -70,7 +70,7 @@ export default function SignupForm(props) {
 
     const signup = e => {
         e.preventDefault()
-        console.log('values', values)
+        // console.log('values', values)
         axiosWithAuth()
             .post('api/register', values)
             .then(() => {
